@@ -1,79 +1,85 @@
-# LaTeX render test, round 3
-
-D1
+# Round 4
 
 <details>
-<summary>Solution (single-line $$)</summary>
+<summary>A</summary>
 
-$$x = \frac{1}{2}$$
+V1 next:
+
+$$a &= b$$
+
+V2 next:
+
+$$\begin{aligned} a \end{aligned}$$
+
+V3 next:
+
+$$a \cr b$$
+
+V4 next:
+
+$$\tfrac{1}{2}$$
+
+V5 next:
+
+$$E[X] = 0 \cdot \tfrac{1}{2}$$
+
+V6 next:
+
+$$\begin{aligned} E[X] &= 0 \cdot \tfrac{1}{2} + 1 \cdot \tfrac{1}{2} \cr &= \tfrac{1}{2} \end{aligned}$$
+
+V7 next:
+
+$$\begin{cases} 1 & x \ge 0 \cr 0 & x \lt 0 \end{cases}$$
+
+V8 next:
+
+$$x = 1 \quad \text{and} \quad y = 2$$
 
 </details>
 
-D2
+V9 top-level single line aligned:
 
-<details>
-<summary>Solution (blank line after summary, $$ block, blank lines)</summary>
+$$\begin{aligned} E[X] &= 0 \cdot \tfrac{1}{2} + 1 \cdot \tfrac{1}{2} \cr &= \tfrac{1}{2} \end{aligned}$$
 
-Some text first.
-
-$$
-x = \frac{1}{2}
-$$
-
-More text.
-
-</details>
-
-D3
-
-<details>
-<summary>Solution (math fence)</summary>
-
-```math
-x = \frac{1}{2}
-```
-
-</details>
-
-D4
-
-<details>
-<summary><b>Solution</b></summary>
-<br>
+V10 top-level multi-line aligned:
 
 $$
-x = \frac{1}{2}
+\begin{aligned}
+E[X] &= 0 \cdot \tfrac{1}{2} \\
+&= 0
+\end{aligned}
 $$
 
-</details>
+- V11 list single line with ampersand:
 
-L1
+  $$\begin{aligned} a &= b \cr &= c \end{aligned}$$
 
-1. Step one:
+P01 before brace {$x$} end.
 
-   $$E[X] = \mu$$
+P02 before bracket [$x$] end.
 
-2. Step two.
+P03 before quote "$x$" end.
 
-L2
+P04 bold **$x$** end.
 
-- Bullet with block:
+P05 after semicolon $x$; end.
 
-  $$
-  E[X] = \mu
-  $$
+P06 after colon $x$: end.
 
-L3 After list, top-level block works:
+P07 after question $x$? end.
 
-$$
-E[X] = \mu
-$$
+P08 after bang $x$! end.
 
-Q1
+P09 after quote "$x$" end.
 
-> [!TIP]
-> Block inside an alert:
->
-> $$
-> E[X] = \mu
-> $$
+P10 after slash $x$/$y$ end.
+
+P11 start of line:
+
+$x$ starts the line.
+
+P12 em dash $x$—end and —$y$ end.
+
+P13 italic _$x$_ end.
+
+P14 bold close $x$** after.
