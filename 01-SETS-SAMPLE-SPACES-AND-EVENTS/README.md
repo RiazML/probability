@@ -79,7 +79,7 @@ Start at the top. Each arrow means "you need this first".
   mistakes in probability come from a wrong or fuzzy sample space.
 - Draw a Venn diagram for every problem with two or three events. It takes ten
   seconds and catches many errors.
-- Read $\cup$ as "or", $\cap$ as "and", and $A^c$ as "not $A$". Say the words out loud.
+- Read $\cup$ as "or", $\cap$ as "and", and $A^c$ as "not A". Say the words out loud.
 - De Morgan's laws feel strange at first. Check them on a small example, like one
   roll of a die, until they feel obvious.
 
