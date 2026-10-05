@@ -2,6 +2,10 @@
 
 Notes, worked problems and Python simulations for probability theory.
 
+**Start here: [SYLLABUS.md](SYLLABUS.md)**, the full roadmap from sample spaces
+to Bayes, Gaussians, information theory, Markov chains and sampling, with
+connections to AI/ML at every step.
+
 ## Topics
 
 - [ ] Sample spaces, events and axioms
