@@ -198,7 +198,10 @@ It matches Appendix A of `SYLLABUS.md`.
 | Negative binomial | `\text{NegBin}(r, p)` | number of **failures** before the r-th success |
 | Poisson | `\text{Pois}(\lambda)` | λ = rate (mean) |
 | Hypergeometric | `\text{HGeom}(N, K, n)` | |
-| Uniform | `\text{Unif}(a, b)` | |
+| Discrete uniform | `\text{Unif}\lbrace a, \dots, b \rbrace` | whole numbers a to b, each equally likely |
+| Categorical | `\text{Cat}(p_1, \dots, p_k)` | one draw from k categories |
+| Multinomial | `\text{Mult}(n, p_1, \dots, p_k)` | counts from n draws |
+| Uniform | `\text{Unif}(a, b)` | continuous, on the interval from a to b |
 | Normal | `\mathcal{N}(\mu, \sigma^2)` | second parameter is the **variance** |
 | Exponential | `\text{Exp}(\lambda)` | λ = **rate**, mean 1/λ |
 | Gamma | `\text{Gamma}(\alpha, \beta)` | shape α, **rate** β |
