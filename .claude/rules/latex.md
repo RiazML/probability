@@ -34,10 +34,14 @@ Zero errors is required. A warning means "this command was not tested yet".
 **Inline math**
 
 - No space just inside the dollars: `$x$`, not `$ x $`.
-- Before the opening `$`: a space or an opening bracket. `variance$\sigma^2$` does not render.
-- After the closing `$`: a space or punctuation (`. , ; : ) ? ! -`).
-  **Never a letter or a digit:** `the $n$th term` and `$x$2` do not render.
-  Write `the $n$-th term`.
+- **Before** the opening `$`, only: a space, the start of the line, `(`, or `**`
+  (bold). These do **not** render: `variance$\sigma^2$`, `{$x$}`, `[$x$]`, `"$x$"`,
+  `_$x$_`, `x/$y$`.
+- **After** the closing `$`, only: a space, the end of the line, or one of
+  `. , ; : ? ! ) - **`. **Never a letter or a digit:** `the $n$th term` and
+  `$x$2` do not render. Write `the $n$-th term`.
+- **No `\begin{...}` in inline math** (no matrices or `cases` in a sentence).
+  Use a display block.
 
 **Display math (top level)**
 
@@ -56,20 +60,28 @@ Here $p(x)$ is the PMF.
 - No blank lines inside the block.
 - No `$` inside the block.
 
-**Display math inside a list item, `<details>` or a table: ONE line only.**
-GitHub does not render a multi-line `$$` block there. Write the whole formula on
-one line, with a blank line before and after it, and use `\cr` for new rows:
+**Display math inside a list item or `<details>`: ONE line, no environments.**
+GitHub does not render a multi-line `$$` block there, and it does not render a
+one-line `$$` that contains `\begin{...}` (`aligned`, `cases`, matrices) there
+either. So, inside lists and `<details>`:
+
+- write each formula on **one line**, with a blank line before and after it;
+- write a derivation as **one chain** (`a = b = c`) or as **several one-line formulas**;
+- keep `aligned`, `cases` and matrices for top-level `$$` blocks only.
 
 ```markdown
 <details>
-<summary>Solution</summary>
+<summary>Answer</summary>
 
-$$E[X] = \sum_{k=0}^{n} k \binom{n}{k} p^k (1-p)^{n-k} = np$$
+$$E[X] = 0 \cdot \tfrac{1}{2} + 1 \cdot \tfrac{1}{2} = \tfrac{1}{2}$$
 
-$$\begin{aligned} \operatorname{Var}(X) &= E[X^2] - (E[X])^2 \cr &= np(1-p) \end{aligned}$$
+$$\operatorname{Var}(X) = E[X^2] - (E[X])^2 = \tfrac{1}{2} - \tfrac{1}{4} = \tfrac{1}{4}$$
 
 </details>
 ```
+
+At the top level (not in a list or `<details>`), a one-line `$$` with
+`\begin{aligned} ... \cr ... \end{aligned}` is fine.
 
 Blockquotes and alerts (`> [!NOTE]`) are fine with multi-line `$$` blocks
 when every line starts with `>`.

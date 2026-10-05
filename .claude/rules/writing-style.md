@@ -117,8 +117,8 @@ more common. The simulation in "Simulate It" agrees.
 - Mix the problem types: compute, prove, explain in words, and simulate.
 - Mark the difficulty in the label: **1. (Easy)**, **2. (Medium)**, **3. (Hard)**.
 - Put the answer in `<details>`, with a blank line after `<summary>` and before
-  `</details>`. Inside `<details>`, display math must be on **one line**
-  (see `latex.md`).
+  `</details>`. Inside `<details>`, display math must be on **one line**, with no
+  `\begin{...}` (see `latex.md`).
 
 ```markdown
 **1. (Easy)** Roll a fair die. What is $P(\text{even})$?

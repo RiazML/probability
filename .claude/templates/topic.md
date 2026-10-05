@@ -82,7 +82,7 @@ $$
 2. {{Apply the idea, showing the arithmetic.}}
 3. {{Finish the calculation.}}
 
-**Answer.** {{$P(\dots) \approx 0.167$, in words.}}
+**Answer.** $P(D \mid +) \approx 0.167$ {{(replace with the result, then say it in words)}}
 
 **Check.** {{Why the answer makes sense: a bound, a special case, or the simulation.}}
 
@@ -162,9 +162,9 @@ $$P(\text{even}) = \frac{3}{6} = \frac{1}{2}$$
 <details>
 <summary>Answer</summary>
 
-{{Use aligned with \cr for several steps on one line:}}
+{{Several steps: write one chain on one line (no aligned or cases inside details):}}
 
-$$\begin{aligned} E[X] &= 0 \cdot \tfrac{1}{2} + 1 \cdot \tfrac{1}{2} \cr &= \tfrac{1}{2} \end{aligned}$$
+$$E[X] = 0 \cdot \tfrac{1}{2} + 1 \cdot \tfrac{1}{2} = \tfrac{1}{2}$$
 
 </details>
 

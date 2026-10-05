@@ -71,6 +71,10 @@ BANNED = {
     "choose": "use \\binom{n}{k}",
 }
 
+# Characters tested on GitHub right next to inline math (others break it).
+OK_BEFORE = set("(*")
+OK_AFTER = set(".,;:?!)-*—")
+
 BAD_ENVS = {"align", "align*", "equation", "equation*", "gather", "gather*",
             "multline", "eqnarray"}
 
@@ -179,8 +183,9 @@ def check_tex(tex, *, display, path, line_no, rep, in_table=False):
             rep.add("ERROR", path, line_no,
                     f"\\begin{{{env}}}: use \\begin{{aligned}} inside $$ ... $$")
         if not display:
-            rep.add("WARNING", path, line_no,
-                    f"\\begin{{{env}}} in inline math is hard to read; use display math")
+            rep.add("ERROR", path, line_no,
+                    f"\\begin{{{env}}} does not render in inline math on GitHub; "
+                    "use a top-level $$ block")
     if re.search(r"\\mathbb\{1\}", body):
         rep.add("WARNING", path, line_no, "\\mathbb{1} looks different in each renderer; use \\mathbf{1}")
     if display and any(not ln.strip() for ln in lines[1:-1]):
@@ -262,7 +267,12 @@ def check_file(path, rep):
             if not (stripped.endswith("$$") and len(stripped) > 4 and stripped.count("$$") == 2):
                 rep.add("ERROR", path, n, "a $$ line must be just '$$' or a full '$$ ... $$'")
                 continue
-            check_tex(stripped[2:-2].strip(), display=True, path=path, line_no=n, rep=rep)
+            inner = stripped[2:-2].strip()
+            check_tex(inner, display=True, path=path, line_no=n, rep=rep)
+            if (in_list or details > 0) and "\\begin" in inner:
+                rep.add("ERROR", path, n,
+                        "\\begin{...} inside a list or <details> does not render on GitHub; "
+                        "write the steps as one chain (a = b = c) or as several one-line $$ formulas")
             if not is_blank(prev_line):
                 rep.add("ERROR", path, n, "add a blank line before $$ ... $$")
             if not is_blank(next_line):
@@ -301,12 +311,14 @@ def check_file(path, rep):
                 rep.add("ERROR", path, n, f"no space just inside the dollars: write ${tex.strip()}$")
             before = no_code[a - 1] if a > 0 else " "
             after = no_code[b + 1] if b + 1 < len(no_code) else " "
-            if before.isalnum():
-                rep.add("ERROR", path, n, "put a space before the opening $")
-            if after.isalnum():
+            if not (before.isspace() or before in OK_BEFORE):
                 rep.add("ERROR", path, n,
-                        "a letter or digit right after the closing $ stops the math "
-                        "from rendering; add a space or a hyphen")
+                        f"'{before}' right before the opening $ stops the math from rendering "
+                        "on GitHub; only a space, '(' or '**' may come before $")
+            if not (after.isspace() or after in OK_AFTER):
+                rep.add("ERROR", path, n,
+                        f"'{after}' right after the closing $ stops the math from rendering; "
+                        "only a space or . , ; : ? ! ) - * may come after $")
             check_tex(tex, display=False, path=path, line_no=n, rep=rep, in_table=in_table)
 
     if display_open is not None:

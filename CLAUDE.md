@@ -131,7 +131,7 @@ Every folder has a `README.md`.
 
 ## Quick Math Reference
 
-The full rules are in `.claude/rules/latex.md`. These five cause most problems:
+The full rules are in `.claude/rules/latex.md`. These cause most problems:
 
 | Never | Always |
 |---|---|
@@ -139,4 +139,5 @@ The full rules are in `.claude/rules/latex.md`. These five cause most problems:
 | `\,` `\;` `\!` | `\thinspace`, `\quad`, or nothing |
 | `P(A \| B)` | `P(A \mid B)` |
 | `f^*` | `f^{\ast}` |
-| multi-line `$$` inside a list or `<details>` | one line: `$$ ... $$`, rows split with `\cr` |
+| multi-line `$$`, or `\begin{...}`, inside a list or `<details>` | one line, one chain: `$$a = b = c$$` |
+| `{$x$}`, `"$x$"`, `$n$th` | a space or `(` before `$`; a space or `. , ; : ? ! ) -` after it |
