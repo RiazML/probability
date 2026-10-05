@@ -1,4 +1,4 @@
-# Probability: The Complete Syllabus
+# Probability: Zero to Hero
 
 ```text
  ____            _           _     _ _ _ _
@@ -8,53 +8,54 @@
 |_|   |_|  \___/|_.__/ \__,_|_.__/|_|_|_|\__|\__, |
                                              |___/
 
-     From coin flips  -->  Bayes  -->  Gaussians  -->  Entropy  -->  AI / ML
+   ZERO  -->  coin flips  -->  Bayes  -->  distributions  -->  CLT  -->  HERO
 ```
 
-> A full, self-study syllabus for probability, built for three goals:
+> A complete self-study path through **probability and nothing else**:
+> from "what is a sample space?" to Markov chains, martingales and
+> measure-theoretic probability, plus where probability is used in the
+> real world.
 >
-> 1. **Understand the math.** Know why each formula is true, not just what it is.
-> 2. **Use it in AI/ML.** Know where each idea shows up in real models.
-> 3. **Use it in life.** Make better decisions under uncertainty.
+> 1. **Understand it.** Know why each result is true, not just the formula.
+> 2. **Use it.** Know where it shows up: AI/ML, computer science, finance,
+>    medicine, games and more.
+> 3. **Live it.** Make better decisions under uncertainty.
 
 ---
 
 ## Table of Contents
 
 - [How to Use This Syllabus](#how-to-use-this-syllabus)
-- [The Big Picture Roadmap](#the-big-picture-roadmap)
-- [Module 00: Prerequisites](#module-00-prerequisites)
-- **Part I: Foundations**
+- [Zero to Hero: The Five Levels](#zero-to-hero-the-five-levels)
+- **Level 1: Zero (Foundations)**
   - [Module 01: Sets, Sample Spaces and Events](#module-01-sets-sample-spaces-and-events)
-  - [Module 02: Counting (Combinatorics)](#module-02-counting-combinatorics)
+  - [Module 02: Counting](#module-02-counting)
   - [Module 03: Axioms of Probability](#module-03-axioms-of-probability)
   - [Module 04: Conditional Probability, Independence and Bayes](#module-04-conditional-probability-independence-and-bayes)
-- **Part II: Random Variables**
+- **Level 2: Random Variables**
   - [Module 05: Discrete Random Variables](#module-05-discrete-random-variables)
   - [Module 06: Expectation, Variance and Moments](#module-06-expectation-variance-and-moments)
   - [Module 07: Discrete Distributions](#module-07-discrete-distributions)
   - [Module 08: Continuous Random Variables](#module-08-continuous-random-variables)
   - [Module 09: Continuous Distributions](#module-09-continuous-distributions)
-- **Part III: Many Random Variables**
-  - [Module 10: Joint, Marginal and Conditional Distributions](#module-10-joint-marginal-and-conditional-distributions)
-  - [Module 11: Covariance, Correlation and the Covariance Matrix](#module-11-covariance-correlation-and-the-covariance-matrix)
+- **Level 3: Many Random Variables**
+  - [Module 10: Joint Distributions](#module-10-joint-distributions)
+  - [Module 11: Covariance and Correlation](#module-11-covariance-and-correlation)
   - [Module 12: The Multivariate Gaussian](#module-12-the-multivariate-gaussian)
   - [Module 13: Functions of Random Variables](#module-13-functions-of-random-variables)
   - [Module 14: Conditional Expectation](#module-14-conditional-expectation)
-- **Part IV: Tools and Theorems**
+- **Level 4: The Big Theorems**
   - [Module 15: Generating Functions](#module-15-generating-functions)
   - [Module 16: Inequalities and Concentration](#module-16-inequalities-and-concentration)
   - [Module 17: Limit Theorems (LLN and CLT)](#module-17-limit-theorems-lln-and-clt)
-- **Part V: Learning from Data**
-  - [Module 18: Statistical Inference (MLE, MAP, Bayesian)](#module-18-statistical-inference-mle-map-bayesian)
-  - [Module 19: Information Theory](#module-19-information-theory)
-- **Part VI: Randomness Over Time and Computation**
-  - [Module 20: Stochastic Processes and Markov Chains](#module-20-stochastic-processes-and-markov-chains)
-  - [Module 21: Sampling and Computational Probability](#module-21-sampling-and-computational-probability)
-- **Part VII: Putting It to Work**
-  - [Module 22: Probability in AI/ML: The Map](#module-22-probability-in-aiml-the-map)
-  - [Module 23: Probability for Life](#module-23-probability-for-life)
-- [Study Plan (About 30 Weeks)](#study-plan-about-30-weeks)
+- **Level 5: Hero**
+  - [Module 18: Stochastic Processes](#module-18-stochastic-processes)
+  - [Module 19: Simulation and Monte Carlo](#module-19-simulation-and-monte-carlo)
+  - [Module 20: Advanced Probability (Measure Theory)](#module-20-advanced-probability-measure-theory)
+- **Uses of Probability**
+  - [Module 21: Applications of Probability](#module-21-applications-of-probability)
+  - [Module 22: Probability for Life](#module-22-probability-for-life)
+- [Study Plan](#study-plan)
 - [Appendix A: Notation Cheat Sheet](#appendix-a-notation-cheat-sheet)
 - [Appendix B: Distribution Cheat Sheet](#appendix-b-distribution-cheat-sheet)
 - [Appendix C: The One-Page Formula Sheet](#appendix-c-the-one-page-formula-sheet)
@@ -65,157 +66,91 @@
 
 ## How to Use This Syllabus
 
+Every module folder in this repo matches a module below, and every file in
+the folder matches one topic in the module's checklist.
+
 Every module has the same layout:
 
 ```text
 +-----------------------------------------------------------------+
 |  MODULE NN  ::  TITLE                                           |
 +-----------------------------------------------------------------+
-|  Why it matters  -> the one-line reason to care                 |
-|  Topics          -> checklist of everything to learn            |
-|  Key formulas    -> the results you must know by heart          |
-|  In AI/ML        -> where it shows up in real models            |
-|  In life         -> how it helps you think and decide           |
-|  Practice        -> pen-and-paper + Python exercises            |
+|  Why it matters   -> the one-line reason to care                |
+|  Topics           -> checklist of everything to learn           |
+|  Key formulas     -> the results you must know by heart         |
+|  Where it's used  -> real uses of the ideas                     |
+|  Practice         -> pen-and-paper + simulation exercises       |
 +-----------------------------------------------------------------+
 ```
 
-**Importance markers:**
+**Importance markers**
 
 ```text
   [*****]  Core. Used everywhere. Master it.
-  [**** ]  Very important for ML.
+  [**** ]  Very important.
   [***  ]  Important. Learn it well.
   [**   ]  Good to know. Come back later if short on time.
 ```
 
-**The study loop for every module:**
+**The study loop for every module**
 
 ```text
-     +--------+      +---------+      +---------+      +--------+
-     |  READ  | ---> | DERIVE  | ---> |  CODE   | ---> | EXPLAIN|
-     | theory |      | by hand |      | simulate|      | in own |
-     +--------+      +---------+      +---------+      | words  |
-          ^                                            +--------+
-          |                                                 |
-          +------------------- repeat ----------------------+
+     +--------+      +---------+      +----------+      +---------+
+     |  READ  | ---> | DERIVE  | ---> | SIMULATE | ---> | EXPLAIN |
+     | theory |      | by hand |      | in code  |      | in own  |
+     +--------+      +---------+      +----------+      |  words  |
+          ^                                             +---------+
+          |                                                  |
+          +-------------------- repeat ----------------------+
 ```
 
 1. **Read** the theory from a book or lecture (see [Resources](#appendix-d-resources)).
-2. **Derive** the key formulas yourself on paper.
-3. **Code** a simulation in Python and check that it matches the formula.
-4. **Explain** it in your own words in a notes file in this repo.
+2. **Derive** the key results yourself on paper.
+3. **Simulate** it with a few lines of Python and check it matches.
+4. **Explain** it in your own words in the matching file in this repo.
+
+**What you need before starting:** school algebra is enough for Level 1.
+From Module 08 on you need basic calculus (derivatives and integrals).
+Modules 11 and 12 use a little matrix algebra. Learn those bits as you meet
+them; this syllabus stays focused on probability.
 
 ---
 
-## The Big Picture Roadmap
+## Zero to Hero: The Five Levels
 
 ```text
-                           +--------------------------+
-                           |   00  PREREQUISITES      |
-                           | sets, calculus, lin.alg  |
-                           +------------+-------------+
-                                        |
-          +-----------------------------v------------------------------+
-          |  PART I  FOUNDATIONS                                       |
-          |  01 Sets/Events -> 02 Counting -> 03 Axioms -> 04 Bayes    |
-          +-----------------------------+------------------------------+
-                                        |
-          +-----------------------------v------------------------------+
-          |  PART II  RANDOM VARIABLES                                 |
-          |  05 Discrete RV -> 06 E[X], Var -> 07 Discrete dists       |
-          |  08 Continuous RV ----------------> 09 Continuous dists    |
-          +-----------------------------+------------------------------+
-                                        |
-          +-----------------------------v------------------------------+
-          |  PART III  MANY RANDOM VARIABLES                           |
-          |  10 Joint -> 11 Covariance -> 12 Multivariate Gaussian     |
-          |  13 Functions of RVs -> 14 Conditional Expectation         |
-          +-----------------------------+------------------------------+
-                                        |
-          +-----------------------------v------------------------------+
-          |  PART IV  TOOLS AND THEOREMS                               |
-          |  15 Generating fns -> 16 Inequalities -> 17 LLN and CLT    |
-          +-----------------------------+------------------------------+
-                                        |
-               +------------------------+------------------------+
-               |                                                 |
-  +------------v---------------+               +-----------------v-----------+
-  | PART V  LEARNING FROM DATA |               | PART VI  PROCESSES/COMPUTE  |
-  | 18 MLE, MAP, Bayesian      |               | 20 Markov chains, MDPs      |
-  | 19 Entropy, KL, CE         |               | 21 Monte Carlo, MCMC, VI    |
-  +------------+---------------+               +-----------------+-----------+
-               |                                                 |
-               +------------------------+------------------------+
-                                        |
-          +-----------------------------v------------------------------+
-          |  PART VII  PUTTING IT TO WORK                              |
-          |  22 Probability in AI/ML        23 Probability for life    |
-          +------------------------------------------------------------+
+  LEVEL 5  HERO              +--------------------------------------------+
+                             | 18 Stochastic processes   19 Simulation    |
+                             | 20 Advanced (measure-theoretic) probability|
+                             +---------------------^----------------------+
+                                                   |
+  LEVEL 4  BIG THEOREMS      +---------------------+----------------------+
+                             | 15 Generating fns  16 Inequalities  17 CLT |
+                             +---------------------^----------------------+
+                                                   |
+  LEVEL 3  MANY VARIABLES    +---------------------+----------------------+
+                             | 10 Joint  11 Covariance  12 Multivar. Gauss|
+                             | 13 Functions of RVs  14 Cond. expectation  |
+                             +---------------------^----------------------+
+                                                   |
+  LEVEL 2  RANDOM VARIABLES  +---------------------+----------------------+
+                             | 05 Discrete RV  06 E[X],Var  07 Discrete   |
+                             | 08 Continuous RV  09 Continuous dists      |
+                             +---------------------^----------------------+
+                                                   |
+  LEVEL 1  ZERO              +---------------------+----------------------+
+                             | 01 Sets/Events  02 Counting  03 Axioms     |
+                             | 04 Conditional probability and Bayes       |
+                             +--------------------------------------------+
+
+  USES (alongside every level)
+     21 Applications: AI/ML, CS, finance, medicine, games, ...
+     22 Probability for life: better decisions every day
 ```
-
-**Shortest path to ML** (if you are in a hurry):
-
-```text
- 00 -> 01 -> 03 -> 04 -> 05 -> 06 -> 07 -> 08 -> 09 -> 10 -> 11 -> 12
-    -> 14 -> 17 -> 18 -> 19 -> 21 -> 22
-```
-
-Then come back for 02, 13, 15, 16 and 20.
 
 ---
 
-## Module 00: Prerequisites
-
-```text
-+-----------------------------------------------------------------+
-|  MODULE 00  ::  PREREQUISITES                    [*****]  1 wk  |
-+-----------------------------------------------------------------+
-```
-
-**Why it matters:** Probability is written in the language of sets, sums,
-integrals and matrices. Weakness here shows up as confusion later.
-
-**Topics**
-
-- [ ] Set notation: element of, subset, union, intersection, complement
-- [ ] Functions: domain, range, one-to-one, inverse functions
-- [ ] Summation and product notation (Σ, Π) and their rules
-- [ ] Series: arithmetic, geometric, and the exponential series
-- [ ] Logarithms and exponentials (log turns products into sums)
-- [ ] Derivatives: chain rule, product rule, partial derivatives, gradients
-- [ ] Integrals: definite integrals, substitution, integration by parts
-- [ ] Double integrals, changing the order of integration, polar coordinates
-- [ ] Linear algebra: vectors, matrices, transpose, inverse, determinant
-- [ ] Eigenvalues and eigenvectors; symmetric and positive semi-definite matrices
-- [ ] Python: `numpy`, `matplotlib`, `scipy.stats`
-
-**Key formulas**
-
-```text
-  Geometric series      Σ_{k=0}^{∞} r^k      = 1 / (1 - r)          for |r| < 1
-  Finite geometric      Σ_{k=0}^{n-1} r^k    = (1 - r^n) / (1 - r)
-  Exponential series    e^x                  = Σ_{k=0}^{∞} x^k / k!
-  Limit for e           (1 + x/n)^n          -> e^x                 as n -> ∞
-  Log rules             log(ab) = log a + log b,   log(a^k) = k log a
-  Integration by parts  ∫ u dv               = uv - ∫ v du
-  Gaussian integral     ∫_{-∞}^{∞} e^{-x²} dx = √π
-```
-
-**In AI/ML:** Log-likelihoods turn products of probabilities into sums so
-computers can optimize them. Gradients drive all of deep learning. Matrices
-hold covariance, data and weights.
-
-**Practice**
-
-1. Prove the finite geometric series formula.
-2. Compute ∫ x e^{-x} dx from 0 to ∞ using integration by parts (answer: 1).
-3. Prove the Gaussian integral using polar coordinates.
-4. In `numpy`, generate 10,000 random numbers and plot a histogram.
-
----
-
-# Part I: Foundations
+# Level 1: Zero (Foundations)
 
 ## Module 01: Sets, Sample Spaces and Events
 
@@ -230,6 +165,7 @@ exactly what can happen.
 
 **Topics**
 
+- [ ] What probability is: a number between 0 and 1 measuring how likely something is
 - [ ] Random experiment, outcome, sample space Ω
 - [ ] Events as subsets of Ω
 - [ ] Set operations on events: union (OR), intersection (AND), complement (NOT)
@@ -238,7 +174,6 @@ exactly what can happen.
 - [ ] Partitions of the sample space
 - [ ] De Morgan's laws
 - [ ] Finite, countably infinite and uncountable sample spaces
-- [ ] Intuition for σ-algebras (which subsets we are allowed to measure)
 
 **Picture**
 
@@ -264,9 +199,9 @@ exactly what can happen.
   Distributive    A ∩ (B ∪ C) = (A ∩ B) ∪ (A ∩ C)
 ```
 
-**In AI/ML:** The set of possible labels in classification is a sample
-space. The vocabulary of a language model is the sample space for the next
-token.
+**Where it's used:** Every probability problem starts here: listing the
+possible outcomes of a game, a test, a network packet, or the next word a
+language model can output.
 
 **Practice**
 
@@ -276,22 +211,21 @@ token.
 
 ---
 
-## Module 02: Counting (Combinatorics)
+## Module 02: Counting
 
 ```text
 +-----------------------------------------------------------------+
-|  MODULE 02  ::  COUNTING                         [***  ]  1 wk  |
+|  MODULE 02  ::  COUNTING                         [**** ]  1 wk  |
 +-----------------------------------------------------------------+
 ```
 
 **Why it matters:** When all outcomes are equally likely,
-probability = (favorable outcomes) / (total outcomes). Counting is how you
-get both numbers.
+probability = (favorable outcomes) / (total outcomes). Counting gets you
+both numbers.
 
 **Topics**
 
-- [ ] Multiplication rule (product rule)
-- [ ] Addition rule
+- [ ] Multiplication rule and addition rule
 - [ ] Permutations: ordered, without replacement
 - [ ] Combinations: unordered, without replacement
 - [ ] Sampling with replacement (ordered and unordered)
@@ -301,7 +235,7 @@ get both numbers.
 - [ ] Inclusion-exclusion principle
 - [ ] Pigeonhole principle
 - [ ] Story proofs (proving identities by counting two ways)
-- [ ] Classic problems: birthday problem, matching (derangements), poker hands
+- [ ] Classic problems: birthday problem, derangements (matching), poker hands
 
 **The counting table**
 
@@ -323,20 +257,18 @@ get both numbers.
   Stirling             n! ≈ √(2πn) (n/e)^n
 ```
 
-**In AI/ML:** Size of hyperparameter grids, number of possible feature
-subsets, n-gram counts, and why brute force search explodes.
-
-**In life:** Lottery odds, password strength, and why "23 people share a
-birthday half the time" surprises everyone.
+**Where it's used:** Lottery and poker odds, password strength, hash
+collisions (the birthday problem), counting possible DNA sequences, and
+estimating how fast a brute-force search blows up.
 
 **Practice**
 
 1. How many 5-card poker hands are a full house?
 2. Birthday problem: find P(at least two share a birthday) for n people.
-   Plot it for n = 1..60. Where does it cross 50%? (Answer: n = 23.)
+   Where does it cross 50%? (Answer: n = 23.)
 3. Derangements: what is the probability nobody gets their own hat back
    among n people? Show that it tends to 1/e.
-4. Simulate the birthday problem in Python and compare with your formula.
+4. Simulate the birthday problem and compare with your formula.
 
 ---
 
@@ -376,16 +308,17 @@ everything else in probability.
   Union bound    P(A₁ ∪ ... ∪ Aₙ) ≤ P(A₁) + ... + P(Aₙ)
 ```
 
-**In AI/ML:** Every model output that is a probability must obey these
-axioms. That is why softmax outputs are non-negative and sum to 1. The union
-bound appears in learning theory proofs.
+**Where it's used:** Any system that outputs probabilities must obey these
+rules; that is why a classifier's output probabilities are non-negative and
+sum to 1. The union bound is used to bound failure rates of systems with many
+parts.
 
 **Practice**
 
 1. Prove the complement rule and the addition rule from the axioms only.
 2. A stick is broken at two uniform random points. What is the probability
    the three pieces form a triangle? (Answer: 1/4.) Verify by simulation.
-3. Estimate π by throwing random points into a square (Monte Carlo).
+3. Estimate π by throwing random points into a square.
 
 ---
 
@@ -397,9 +330,8 @@ bound appears in learning theory proofs.
 +-----------------------------------------------------------------+
 ```
 
-**Why it matters:** This is the single most important module. Conditional
-probability is how you update beliefs with evidence. All of machine learning
-is, in some sense, computing P(answer | data).
+**Why it matters:** The single most important module. Conditional
+probability is how you update what you believe when you learn something new.
 
 **Topics**
 
@@ -456,31 +388,27 @@ is, in some sense, computing P(answer | data).
   P(D | +) = 0.0099 / 0.0594 ≈ 0.167    <-- only 16.7%, not 99%!
 
   Out of 10,000 people:
-     100 sick   -->  99 test positive
+     100 sick    -->  99 test positive
    9,900 healthy --> 495 test positive
    Positive tests = 594, of which only 99 are sick.
 ```
 
-**In AI/ML:**
-- **Naive Bayes** classifier: Bayes' theorem + conditional independence of features.
-- **Language models** use the chain rule:
-  P(w₁, ..., wₙ) = Π P(wᵢ | w₁, ..., wᵢ₋₁).
-- **Bayesian networks** and graphical models are built on conditional independence.
-- **Spam filters**, medical AI, and any classifier's precision vs recall.
-
-**In life:** Do not panic at a single positive test. Always ask: "What is the
-base rate?" Update your beliefs gradually with each piece of evidence.
+**Where it's used:** Medical diagnosis, spam filters (Naive Bayes), court
+evidence, search and rescue, language models (the chain rule writes a
+sentence's probability as a product of next-word probabilities), and every
+time you change your mind because of new evidence.
 
 **Practice**
 
 1. Solve Monty Hall with Bayes' theorem, then simulate 100,000 games.
 2. Rework the medical example with prevalence 0.1. What changes, and why?
 3. Find three events that are pairwise independent but not mutually independent.
-4. Build a tiny Naive Bayes spam classifier from scratch on 10 example emails.
+4. Gambler's ruin: start with $k, bet $1 on fair flips until $0 or $N.
+   Show P(reach $N) = k/N.
 
 ---
 
-# Part II: Random Variables
+# Level 2: Random Variables
 
 ## Module 05: Discrete Random Variables
 
@@ -491,7 +419,7 @@ base rate?" Update your beliefs gradually with each piece of evidence.
 ```
 
 **Why it matters:** A random variable turns outcomes into numbers so we can
-do math on them.
+do math with them.
 
 **Topics**
 
@@ -528,13 +456,13 @@ do math on them.
   Indicator    I_A = 1 if A happens, else 0
 ```
 
-**In AI/ML:** A classifier's output is a PMF over classes. The label `y` in a
-dataset is a random variable.
+**Where it's used:** Number of defective items in a batch, number of
+customers in a shop, the class a classifier picks, the score of a dice game.
 
 **Practice**
 
 1. Write the PMF and draw the CDF for the sum of two dice.
-2. Show that a CDF of a discrete variable is a step function.
+2. Show that the CDF of a discrete variable is a step function.
 3. Simulate the sum of two dice 100,000 times and compare with the PMF.
 
 ---
@@ -547,8 +475,8 @@ dataset is a random variable.
 +-----------------------------------------------------------------+
 ```
 
-**Why it matters:** Expectation is the "center" of a distribution and the
-basis of every loss function. Variance measures spread and risk.
+**Why it matters:** Expectation is the long-run average and the center of a
+distribution. Variance measures spread, which is risk.
 
 **Topics**
 
@@ -561,7 +489,7 @@ basis of every loss function. Variance measures spread and risk.
 - [ ] Moments: raw and central; skewness and kurtosis
 - [ ] Median, mode and quantiles
 - [ ] Tail-sum formula for non-negative integer variables
-- [ ] Expected value as the best constant predictor under squared error
+- [ ] Expectation as the best guess under squared error
 
 **Key formulas**
 
@@ -577,20 +505,13 @@ basis of every loss function. Variance measures spread and risk.
   Skewness        E[(X - μ)³] / σ³
   Kurtosis        E[(X - μ)⁴] / σ⁴
   Tail sum        E[X] = Σ_{k=1}^{∞} P(X ≥ k)       (X ∈ {0, 1, 2, ...})
-  Best constant   argmin_c E[(X - c)²] = E[X]
+  Best guess      argmin_c E[(X - c)²] = E[X]
                   argmin_c E[|X - c|]  = median(X)
 ```
 
-**In AI/ML:**
-- **Risk** of a model is an expectation: R(f) = E[ L(f(X), Y) ].
-- **Training** minimizes empirical risk: (1/n) Σ L(f(xᵢ), yᵢ).
-- **SGD** works because a mini-batch gradient is an unbiased estimate of the
-  true gradient (its expectation equals the full gradient).
-- MSE loss predicts the **mean**; MAE loss predicts the **median**.
-
-**In life:** Expected value tells you whether a bet, a job offer or an
-insurance plan is worth it on average. Variance tells you how much it can
-hurt.
+**Where it's used:** Fair prices of bets and insurance, average running time
+of algorithms, expected profit in business, and the loss functions that
+machine learning models minimize (they are expectations).
 
 **Practice**
 
@@ -665,19 +586,17 @@ real-world counts. Learn their stories, not just their formulas.
   Memoryless (geometric):   P(X > m + n | X > m) = P(X > n)
 ```
 
-**In AI/ML:**
-- **Bernoulli** -> binary classification, logistic regression, dropout masks.
-- **Categorical** -> softmax output of every classifier and every LLM token.
-- **Binomial** -> accuracy on a test set of n examples; A/B tests.
-- **Poisson** -> count data (clicks, arrivals, word counts), Poisson regression.
-- **Multinomial** -> bag-of-words models, topic models (LDA).
+**Where it's used:** Quality control (binomial), calls arriving at a call
+center and website hits (Poisson), card games and lotteries
+(hypergeometric), surveys and elections (binomial/multinomial), and every
+classifier's output (categorical).
 
 **Practice**
 
 1. Derive the mean and variance of the binomial using indicators.
 2. Show Binomial(n, λ/n) -> Poisson(λ) as n -> ∞.
 3. Prove the geometric distribution is memoryless.
-4. Plot every PMF above with `scipy.stats` for a few parameter values.
+4. Plot every PMF above for a few parameter values.
 
 ---
 
@@ -689,8 +608,8 @@ real-world counts. Learn their stories, not just their formulas.
 +-----------------------------------------------------------------+
 ```
 
-**Why it matters:** Heights, weights, time, pixel intensities and neural
-network weights are continuous. Probability becomes area under a curve.
+**Why it matters:** Time, height, temperature and prices are continuous.
+Probability becomes area under a curve.
 
 **Topics**
 
@@ -702,7 +621,7 @@ network weights are continuous. Probability becomes area under a curve.
 - [ ] LOTUS for continuous variables
 - [ ] Quantile function (inverse CDF), median, percentiles
 - [ ] Change of variables for one variable (monotonic g)
-- [ ] Mixed discrete-continuous distributions (intuition)
+- [ ] Mixed discrete-continuous distributions
 
 **Picture**
 
@@ -730,11 +649,8 @@ network weights are continuous. Probability becomes area under a curve.
                   f_Y(y) = f_X(g⁻¹(y)) · | d g⁻¹(y) / dy |
 ```
 
-**In AI/ML:**
-- **Normalizing flows** are built entirely on the change-of-variables formula.
-- **Inverse transform sampling** uses the quantile function to generate samples.
-- **Likelihood** of continuous data uses densities, which is why
-  log-likelihoods can be positive.
+**Where it's used:** Measurement errors in science, waiting times, lifetimes
+of machines, percentiles in exam scores and medicine (growth charts).
 
 **Practice**
 
@@ -752,8 +668,9 @@ network weights are continuous. Probability becomes area under a curve.
 +-----------------------------------------------------------------+
 ```
 
-**Why it matters:** The normal distribution alone is the backbone of
-statistics and ML. The others model waiting times, proportions, and priors.
+**Why it matters:** The normal distribution is the most important
+distribution in all of science. The others model waiting times,
+proportions, lifetimes and extremes.
 
 **Topics**
 
@@ -761,13 +678,14 @@ statistics and ML. The others model waiting times, proportions, and priors.
 - [ ] Normal (Gaussian): standardization, z-scores, 68-95-99.7 rule
 - [ ] Exponential: waiting times, memoryless
 - [ ] Gamma: sum of exponentials; the Gamma function
-- [ ] Beta: distribution over probabilities
-- [ ] Chi-square, Student's t, F (needed for statistics)
+- [ ] Beta: a distribution over probabilities
+- [ ] Chi-square, Student's t and F
 - [ ] Laplace (double exponential)
 - [ ] Log-normal
 - [ ] Cauchy (a distribution with no mean)
 - [ ] Logistic and Gumbel
-- [ ] Dirichlet: distribution over probability vectors
+- [ ] Weibull (lifetimes and failure)
+- [ ] Dirichlet: a distribution over probability vectors
 - [ ] Heavy tails vs light tails
 
 **The normal curve**
@@ -810,17 +728,11 @@ statistics and ML. The others model waiting times, proportions, and priors.
   Dirichlet(α)     mean of component i = αᵢ / Σⱼ αⱼ
 ```
 
-**In AI/ML:**
-- **Normal** -> weight initialization, noise models, linear regression, VAEs,
-  diffusion models, batch normalization.
-- **Uniform** -> random initialization, random search, data augmentation.
-- **Beta** -> prior for a probability (click-through rate, Thompson sampling).
-- **Dirichlet** -> prior over class probabilities, topic models.
-- **Laplace** -> the prior behind L1 regularization (Lasso).
-- **Gumbel** -> Gumbel-softmax trick for sampling discrete variables in a
-  differentiable way.
-- **Student-t** -> robust regression; t-SNE uses a t-distribution in low
-  dimensions.
+**Where it's used:** Heights, test scores and measurement noise (normal);
+time until the next earthquake or server failure (exponential, Weibull);
+stock prices and incomes (log-normal); click-through rates (beta); largest
+flood in 100 years (Gumbel); and weight initialization and noise in deep
+learning (normal, uniform).
 
 **Practice**
 
@@ -831,9 +743,9 @@ statistics and ML. The others model waiting times, proportions, and priors.
 
 ---
 
-# Part III: Many Random Variables
+# Level 3: Many Random Variables
 
-## Module 10: Joint, Marginal and Conditional Distributions
+## Module 10: Joint Distributions
 
 ```text
 +-----------------------------------------------------------------+
@@ -841,8 +753,8 @@ statistics and ML. The others model waiting times, proportions, and priors.
 +-----------------------------------------------------------------+
 ```
 
-**Why it matters:** Data has many features. To model them you need to
-describe several random variables at once.
+**Why it matters:** Real situations involve several uncertain quantities at
+once, and how they relate is often what matters most.
 
 **Topics**
 
@@ -882,12 +794,8 @@ describe several random variables at once.
   Mixture             f(x) = Σₖ πₖ fₖ(x),   πₖ ≥ 0,   Σ πₖ = 1
 ```
 
-**In AI/ML:**
-- **Generative models** learn the joint p(x, y). **Discriminative models**
-  learn the conditional p(y | x).
-- Most ML assumes training data is **i.i.d.**; distribution shift is what
-  happens when that fails.
-- **Gaussian mixture models** are mixture distributions.
+**Where it's used:** Height and weight together, rainfall and crop yield,
+symptoms and diseases, features and labels in a dataset.
 
 **Practice**
 
@@ -897,7 +805,7 @@ describe several random variables at once.
 
 ---
 
-## Module 11: Covariance, Correlation and the Covariance Matrix
+## Module 11: Covariance and Correlation
 
 ```text
 +-----------------------------------------------------------------+
@@ -905,8 +813,8 @@ describe several random variables at once.
 +-----------------------------------------------------------------+
 ```
 
-**Why it matters:** Covariance measures how two variables move together. The
-covariance matrix is at the heart of PCA, Gaussians and optimization.
+**Why it matters:** Covariance measures how two variables move together.
+The covariance matrix describes a whole random vector's spread.
 
 **Topics**
 
@@ -915,10 +823,8 @@ covariance matrix is at the heart of PCA, Gaussians and optimization.
 - [ ] Variance of a sum
 - [ ] Uncorrelated does NOT imply independent
 - [ ] Random vectors, mean vector, covariance matrix
-- [ ] Covariance matrix is symmetric and positive semi-definite
-- [ ] Linear transformation of a random vector
-- [ ] Sample mean, sample covariance
-- [ ] Correlation vs causation
+- [ ] The covariance matrix is symmetric and positive semi-definite
+- [ ] Linear transformations of random vectors
 
 **Picture**
 
@@ -941,23 +847,18 @@ covariance matrix is at the heart of PCA, Gaussians and optimization.
   Independent =>   Cov(X,Y) = 0     (but NOT the other way around)
   Cov. matrix      Σ = E[(X - μ)(X - μ)ᵀ],    Σᵢⱼ = Cov(Xᵢ, Xⱼ)
   Linear map       Y = AX + b  =>  E[Y] = Aμ + b,   Cov(Y) = A Σ Aᵀ
-  Var of a·X       Var(aᵀX) = aᵀ Σ a ≥ 0      (so Σ is positive semi-definite)
-  Sample cov.      S = (1/(n-1)) Σᵢ (xᵢ - x̄)(xᵢ - x̄)ᵀ
+  Var of aᵀX       Var(aᵀX) = aᵀ Σ a ≥ 0      (so Σ is positive semi-definite)
 ```
 
-**In AI/ML:**
-- **PCA** = eigen-decomposition of the covariance matrix.
-- **Whitening** and **batch/layer normalization** fix means and variances.
-- **Feature correlation** analysis, multicollinearity in regression.
-- **Weight initialization** (Xavier/He) is chosen to keep variance stable
-  through layers.
+**Where it's used:** Portfolio risk in finance (diversification works
+because of the covariance term), PCA in data science, and sensor fusion.
 
 **Practice**
 
 1. Let X ~ Uniform(-1, 1) and Y = X². Show Cov(X, Y) = 0 but they are dependent.
 2. Prove Var(aᵀX) = aᵀ Σ a.
-3. Compute the covariance matrix of a real dataset (e.g. Iris) with `numpy`
-   and run PCA by hand using `np.linalg.eigh`.
+3. Two stocks each have variance 1 and correlation ρ. Find the variance of
+   a 50/50 portfolio. When is diversification most useful?
 
 ---
 
@@ -965,26 +866,26 @@ covariance matrix is at the heart of PCA, Gaussians and optimization.
 
 ```text
 +-----------------------------------------------------------------+
-|  MODULE 12  ::  THE MULTIVARIATE GAUSSIAN        [*****]  1.5wk |
+|  MODULE 12  ::  THE MULTIVARIATE GAUSSIAN        [**** ]  1.5wk |
 +-----------------------------------------------------------------+
 ```
 
-**Why it matters:** The most important distribution in ML. It stays Gaussian
-under linear maps, marginalization and conditioning, so many problems have
-exact answers.
+**Why it matters:** The most important multi-dimensional distribution. It
+stays Gaussian under linear maps, marginalizing and conditioning, so many
+problems have exact answers.
 
 **Topics**
 
 - [ ] PDF of the multivariate normal
 - [ ] Geometry: contours are ellipses set by the eigenvectors of Σ
 - [ ] Mahalanobis distance
-- [ ] Standard normal vector and the Cholesky trick for sampling
+- [ ] Standard normal vectors and the Cholesky trick
 - [ ] Affine transformations stay Gaussian
 - [ ] Marginals are Gaussian
 - [ ] Conditionals are Gaussian (formula below)
-- [ ] For Gaussians, uncorrelated <=> independent
+- [ ] For jointly Gaussian variables, uncorrelated <=> independent
 - [ ] Sums of independent Gaussians
-- [ ] Product of Gaussian densities (used in Bayesian updates)
+- [ ] The bivariate normal in detail
 
 **Picture: contours**
 
@@ -1011,23 +912,21 @@ exact answers.
   Marginal      x₁ ~ N(μ₁, Σ₁₁)
   Conditional   x₁ | x₂ ~ N( μ₁ + Σ₁₂ Σ₂₂⁻¹ (x₂ - μ₂),   Σ₁₁ - Σ₁₂ Σ₂₂⁻¹ Σ₂₁ )
   Sum           X ~ N(μ₁,σ₁²), Y ~ N(μ₂,σ₂²) indep.  =>  X+Y ~ N(μ₁+μ₂, σ₁²+σ₂²)
+  Bivariate     E[Y | X = x] = μ_Y + ρ (σ_Y / σ_X)(x - μ_X)
 ```
 
-**In AI/ML:**
-- **Gaussian processes** (conditioning formula = GP prediction).
-- **Kalman filters** for tracking and robotics.
-- **VAEs** and **diffusion models** use Gaussian latents and Gaussian noise.
-- **Gaussian Mixture Models**, **LDA/QDA** classifiers.
-- **Linear regression** with Gaussian noise; Bayesian linear regression.
+**Where it's used:** GPS and robot tracking (Kalman filters), weather
+models, Gaussian processes, generative AI models (VAEs, diffusion), and
+finance risk models.
 
 **Practice**
 
 1. Derive the 1-D normal PDF as a special case of the multivariate one.
 2. Sample from a 2-D Gaussian with a given Σ using Cholesky. Plot the cloud
    and its contour ellipses.
-3. Derive the conditional mean formula for the 2-D case.
-4. Show that the squared Mahalanobis distance of x ~ N(μ, Σ) in d dimensions
-   follows a chi-square(d) distribution (by simulation).
+3. Derive the conditional mean formula for the bivariate case.
+4. Show by simulation that the squared Mahalanobis distance of x ~ N(μ, Σ) in
+   d dimensions follows a chi-square(d) distribution.
 
 ---
 
@@ -1039,8 +938,8 @@ exact answers.
 +-----------------------------------------------------------------+
 ```
 
-**Why it matters:** Neural networks are functions of random variables. To
-know the distribution of an output you must transform distributions.
+**Why it matters:** If you know the distribution of X, what is the
+distribution of X², X + Y, or max(X, Y)? This module answers that.
 
 **Topics**
 
@@ -1059,25 +958,23 @@ know the distribution of an output you must transform distributions.
   CDF method       F_Y(y) = P(g(X) ≤ y),   then differentiate
   Jacobian (n-D)   Y = g(X), g invertible:
                    f_Y(y) = f_X(g⁻¹(y)) · | det J_{g⁻¹}(y) |
-  Log form         log f_Y(y) = log f_X(x) - log | det J_g(x) |,   x = g⁻¹(y)
   Convolution      f_{X+Y}(z) = ∫ f_X(x) f_Y(z - x) dx
   Poisson sum      Pois(λ₁) + Pois(λ₂) = Pois(λ₁ + λ₂)        (independent)
   Max of n iid     F_max(x) = F(x)^n
   Min of n iid     F_min(x) = 1 - (1 - F(x))^n
+  Order stat.      k-th smallest of n iid U(0,1) ~ Beta(k, n - k + 1)
   Box-Muller       U₁, U₂ ~ U(0,1):  Z = √(-2 ln U₁) cos(2π U₂) ~ N(0, 1)
 ```
 
-**In AI/ML:**
-- **Normalizing flows**: the log-determinant of the Jacobian is the key term.
-- **Max pooling** and extreme value statistics use the max of variables.
-- **Reparameterization trick** expresses a random variable as a function of
-  simple noise.
+**Where it's used:** System reliability (a chain fails at its weakest link:
+the minimum), auctions (the highest bid: the maximum), flood levels, total
+waiting times, and generating random numbers.
 
 **Practice**
 
 1. If X, Y ~ Uniform(0,1) independent, find the PDF of X + Y (a triangle).
 2. Find the distribution of the minimum of n independent Exponential(λ).
-3. Implement Box-Muller and check the result with a histogram and a QQ plot.
+3. Implement Box-Muller and check the result with a histogram.
 
 ---
 
@@ -1089,8 +986,8 @@ know the distribution of an output you must transform distributions.
 +-----------------------------------------------------------------+
 ```
 
-**Why it matters:** E[Y | X] is the best possible prediction of Y from X.
-That is exactly what regression tries to learn.
+**Why it matters:** E[Y | X] is the best possible prediction of Y once you
+know X. It also breaks hard problems into easy steps.
 
 **Topics**
 
@@ -1101,7 +998,6 @@ That is exactly what regression tries to learn.
 - [ ] E[Y | X] is the best predictor under squared error
 - [ ] Taking out what is known: E[g(X) Y | X] = g(X) E[Y | X]
 - [ ] Random sums (sum of a random number of variables)
-- [ ] Martingales (intuition only)
 
 **Key formulas**
 
@@ -1116,12 +1012,9 @@ That is exactly what regression tries to learn.
   Random sum      N indep. of Xᵢ iid:  E[Σ_{i=1}^{N} Xᵢ] = E[N] E[X]
 ```
 
-**In AI/ML:**
-- **Regression** learns f(x) ≈ E[Y | X = x].
-- **Reinforcement learning**: the value function is a conditional expectation,
-  V(s) = E[ return | state = s ], and the Bellman equation is the tower
-  property applied one step at a time.
-- **Bias-variance decomposition** and **EM algorithm** use these laws.
+**Where it's used:** Insurance (total claims = random number of random
+amounts), prediction and regression, expected time to finish a game, and
+value functions in reinforcement learning.
 
 **Practice**
 
@@ -1129,22 +1022,23 @@ That is exactly what regression tries to learn.
 2. Prove that E[Y | X] minimizes mean squared error.
 3. A store has N ~ Poisson(λ) customers a day, each spending X with mean μ.
    Find the expected total revenue.
+4. How many coin flips on average until you see HH? Until HT? (6 and 4.)
 
 ---
 
-# Part IV: Tools and Theorems
+# Level 4: The Big Theorems
 
 ## Module 15: Generating Functions
 
 ```text
 +-----------------------------------------------------------------+
-|  MODULE 15  ::  GENERATING FUNCTIONS             [**   ]  0.5wk |
+|  MODULE 15  ::  GENERATING FUNCTIONS             [***  ]  1 wk  |
 +-----------------------------------------------------------------+
 ```
 
 **Why it matters:** Generating functions turn hard problems (sums of
-variables, moments) into easy algebra, and they are the tool used to prove
-the Central Limit Theorem.
+variables, moments) into easy algebra. They are the tool used to prove the
+Central Limit Theorem.
 
 **Topics**
 
@@ -1154,7 +1048,7 @@ the Central Limit Theorem.
 - [ ] Uniqueness: same MGF => same distribution
 - [ ] Probability generating function (PGF)
 - [ ] Characteristic function (always exists)
-- [ ] Cumulants (intuition)
+- [ ] Cumulants
 
 **Key formulas**
 
@@ -1172,13 +1066,14 @@ the Central Limit Theorem.
   Normal(μ,σ²)       M(t) = exp(μt + σ²t²/2)
 ```
 
-**In AI/ML:** Chernoff bounds (Module 16) are built from MGFs. Cumulants
-appear in some theory of neural networks at initialization.
+**Where it's used:** Proving limit theorems, branching processes
+(population growth and extinction), and Chernoff bounds.
 
 **Practice**
 
 1. Use MGFs to prove that the sum of independent Poissons is Poisson.
 2. Find the mean and variance of Exponential(λ) from its MGF.
+3. Use the PGF to find the distribution of the sum of two dice.
 
 ---
 
@@ -1191,7 +1086,8 @@ appear in some theory of neural networks at initialization.
 ```
 
 **Why it matters:** Often you cannot compute a probability exactly, but you
-can bound it. These bounds explain why ML models generalize from finite data.
+can bound it. Concentration explains why averages of many random things
+are so predictable.
 
 **Topics**
 
@@ -1199,11 +1095,10 @@ can bound it. These bounds explain why ML models generalize from finite data.
 - [ ] Chebyshev's inequality
 - [ ] Jensen's inequality (convex functions)
 - [ ] Cauchy-Schwarz inequality
-- [ ] Union bound (review)
+- [ ] Union bound (revisited)
 - [ ] Chernoff bounds
 - [ ] Hoeffding's inequality
-- [ ] Concentration of measure (intuition): averages of many variables are
-      very predictable
+- [ ] Concentration of measure (intuition)
 
 **Key formulas**
 
@@ -1218,21 +1113,16 @@ can bound it. These bounds explain why ML models generalize from finite data.
                 P( |X̄ - E[X̄]| ≥ ε ) ≤ 2 exp( -2nε² / (b - a)² )
 ```
 
-**In AI/ML:**
-- **Generalization bounds / PAC learning** use Hoeffding + union bound.
-- **Jensen** proves KL divergence ≥ 0 and gives the **ELBO** in VAEs.
-- **Bandits**: the UCB algorithm comes straight from Hoeffding.
-- **How many test examples do I need?** Hoeffding gives an answer.
-
-**In life:** Chebyshev says at least 75% of any data is within 2 standard
-deviations of the mean, whatever the distribution.
+**Where it's used:** How many people to poll before an election, how many
+test cases to trust a system, guarantees for randomized algorithms, and
+why machine learning models generalize from finite data.
 
 **Practice**
 
 1. Prove Markov's inequality, then derive Chebyshev from it.
 2. Use Jensen to show E[log X] ≤ log E[X].
-3. Using Hoeffding, how many test examples do you need to know a classifier's
-   accuracy within ±2% with 95% confidence?
+3. Using Hoeffding, how many coin flips do you need to estimate P(heads)
+   within ±0.02 with 95% confidence?
 
 ---
 
@@ -1244,9 +1134,9 @@ deviations of the mean, whatever the distribution.
 +-----------------------------------------------------------------+
 ```
 
-**Why it matters:** The Law of Large Numbers says averages converge to the
-truth. The Central Limit Theorem says those averages look Gaussian. Together
-they justify almost all of statistics and Monte Carlo methods.
+**Why it matters:** The Law of Large Numbers says averages settle down to the
+true mean. The Central Limit Theorem says they look normal on the way. This
+is why the normal distribution is everywhere.
 
 **Topics**
 
@@ -1256,11 +1146,11 @@ they justify almost all of statistics and Monte Carlo methods.
 - [ ] Weak Law of Large Numbers (WLLN)
 - [ ] Strong Law of Large Numbers (SLLN)
 - [ ] Central Limit Theorem (CLT)
-- [ ] Normal approximation to the binomial and Poisson; continuity correction
-- [ ] Standard error and the 1/√n rate
+- [ ] Normal approximation to the binomial; continuity correction
 - [ ] Delta method
-- [ ] Slutsky's theorem (intuition)
+- [ ] Slutsky's theorem
 - [ ] When the CLT fails (infinite variance, e.g. Cauchy)
+- [ ] Poisson limit theorem (law of rare events)
 
 **Picture: the CLT in action**
 
@@ -1282,253 +1172,54 @@ they justify almost all of statistics and Monte Carlo methods.
   SLLN                X̄ₙ -> μ almost surely
   CLT                 √n (X̄ₙ - μ) / σ  ->  N(0, 1)     in distribution
   Practical CLT       X̄ₙ ≈ N(μ, σ²/n),     Σ Xᵢ ≈ N(nμ, nσ²)
-  Standard error      SE(X̄) = σ / √n
+  Spread of average   SD(X̄ₙ) = σ / √n       (100x more data = 10x more precise)
   Delta method        √n (g(X̄ₙ) - g(μ))  ->  N(0, g'(μ)² σ²)
+  Poisson limit       Binomial(n, λ/n) -> Poisson(λ)
 ```
 
-**In AI/ML:**
-- **Mini-batch gradients** are averages, so they are approximately Gaussian
-  and concentrate around the true gradient.
-- **Monte Carlo** error shrinks like 1/√n: 100x more samples = 10x accuracy.
-- **Confidence intervals** for model accuracy and A/B tests.
-- **Ensembles** reduce variance by averaging.
-
-**In life:** Small samples lie. A restaurant with 3 reviews averaging 5 stars
-tells you much less than one with 3,000 reviews averaging 4.6.
+**Where it's used:** Casinos and insurance companies (they rely on the LLN
+to make steady profits), opinion polls, quality control, Monte Carlo
+simulation, and averaging in machine learning.
 
 **Practice**
 
 1. Prove the WLLN using Chebyshev's inequality.
 2. Simulate the CLT: averages of n draws from Exponential(1) for
    n = 1, 2, 5, 30, 100. Plot histograms.
-3. Show by simulation that the running average of Cauchy samples does not
+3. Use the normal approximation to find P(more than 60 heads in 100 flips).
+4. Show by simulation that the running average of Cauchy samples does not
    converge.
 
 ---
 
-# Part V: Learning from Data
+# Level 5: Hero
 
-## Module 18: Statistical Inference (MLE, MAP, Bayesian)
-
-```text
-+-----------------------------------------------------------------+
-|  MODULE 18  ::  STATISTICAL INFERENCE            [*****]  3 wk  |
-+-----------------------------------------------------------------+
-```
-
-**Why it matters:** Probability goes from model to data. Inference goes from
-data back to the model. Training an ML model IS statistical inference.
-
-**Topics**
-
-*Estimation basics*
-- [ ] Population vs sample, parameters vs statistics
-- [ ] Estimators: bias, variance, mean squared error, consistency
-- [ ] Sample mean and sample variance (why divide by n - 1)
-- [ ] Bias-variance tradeoff
-
-*Maximum Likelihood (MLE)*
-- [ ] Likelihood function and log-likelihood
-- [ ] MLE for Bernoulli, Binomial, Poisson, Normal, Exponential
-- [ ] Properties: consistency, asymptotic normality, invariance
-- [ ] Fisher information and the Cramér-Rao bound (intuition)
-- [ ] Negative log-likelihood (NLL) as a loss function
-
-*Bayesian inference*
-- [ ] Prior, likelihood, posterior
-- [ ] Conjugate priors
-- [ ] MAP estimation and its link to regularization
-- [ ] Posterior predictive distribution
-- [ ] Credible intervals vs confidence intervals
-
-*Frequentist tools*
-- [ ] Confidence intervals
-- [ ] Hypothesis testing: null and alternative, p-values
-- [ ] Type I and Type II errors, significance level, power
-- [ ] z-test, t-test, chi-square test
-- [ ] A/B testing in practice
-- [ ] Multiple testing problem
-- [ ] Bootstrap
-
-**MLE vs MAP vs Bayesian**
-
-```text
-  +--------------+----------------------------------+-------------------------+
-  | Method       | What it computes                 | Output                  |
-  +--------------+----------------------------------+-------------------------+
-  | MLE          | argmax_θ  p(data | θ)            | one best θ              |
-  | MAP          | argmax_θ  p(data | θ) p(θ)       | one best θ (with prior) |
-  | Full Bayes   | p(θ | data) ∝ p(data | θ) p(θ)   | whole distribution      |
-  +--------------+----------------------------------+-------------------------+
-```
-
-**Key formulas**
-
-```text
-  Likelihood       L(θ) = Πᵢ p(xᵢ | θ)
-  Log-likelihood   ℓ(θ) = Σᵢ log p(xᵢ | θ)
-  MLE              θ̂_MLE = argmax_θ ℓ(θ)
-  MAP              θ̂_MAP = argmax_θ [ ℓ(θ) + log p(θ) ]
-  Posterior        p(θ | x) = p(x | θ) p(θ) / p(x)
-  Predictive       p(x_new | x) = ∫ p(x_new | θ) p(θ | x) dθ
-
-  MSE of estimator MSE(θ̂) = Bias(θ̂)² + Var(θ̂)
-  Bias-variance    E[(y - f̂(x))²] = Bias² + Variance + σ²_noise
-  Sample variance  s² = (1/(n-1)) Σ (xᵢ - x̄)²          (unbiased)
-  Fisher info      I(θ) = -E[ ∂² log p(X | θ) / ∂θ² ]
-  Cramér-Rao       Var(θ̂) ≥ 1 / (n I(θ))               (unbiased θ̂)
-  CI for mean      x̄ ± z_{α/2} · σ / √n                (95%: z = 1.96)
-
-  MLE results:     Bernoulli p̂ = x̄        Poisson λ̂ = x̄
-                   Normal μ̂ = x̄,  σ̂² = (1/n) Σ (xᵢ - x̄)²
-                   Exponential λ̂ = 1 / x̄
-```
-
-**Conjugate priors**
-
-```text
-  Likelihood          Prior               Posterior
-  ------------------  ------------------  ------------------------------------
-  Bernoulli/Binomial  Beta(α, β)          Beta(α + successes, β + failures)
-  Poisson             Gamma(α, β)         Gamma(α + Σxᵢ, β + n)
-  Normal (known σ²)   Normal(μ₀, τ²)      Normal (precision-weighted average)
-  Categorical/Multi.  Dirichlet(α)        Dirichlet(α + counts)
-```
-
-**In AI/ML: the most important connections in this whole syllabus**
-
-```text
-  +-----------------------------+--------------------------------------------+
-  | You write this loss...      | ...and you are actually doing this         |
-  +-----------------------------+--------------------------------------------+
-  | Mean squared error          | MLE with Gaussian noise                    |
-  | Binary cross-entropy        | MLE with Bernoulli outputs                 |
-  | Categorical cross-entropy   | MLE with Categorical (softmax) outputs     |
-  | MSE + L2 penalty (Ridge)    | MAP with a Gaussian prior on weights       |
-  | MSE + L1 penalty (Lasso)    | MAP with a Laplace prior on weights        |
-  | Label smoothing             | Mixing targets with a uniform distribution |
-  +-----------------------------+--------------------------------------------+
-```
-
-- **Overfitting / underfitting** = the bias-variance tradeoff.
-- **Thompson sampling** and Bayesian optimization use posteriors.
-- **A/B testing** for product decisions uses hypothesis tests.
-
-**Practice**
-
-1. Derive the MLE for Bernoulli, Poisson and Normal by hand.
-2. Prove that minimizing MSE equals maximizing a Gaussian likelihood.
-3. Prove that L2 regularization equals a Gaussian prior (MAP).
-4. Coin flips: start with a Beta(1,1) prior, update after each flip, and
-   plot how the posterior narrows.
-5. Bootstrap a 95% confidence interval for the median of a dataset.
-
----
-
-## Module 19: Information Theory
+## Module 18: Stochastic Processes
 
 ```text
 +-----------------------------------------------------------------+
-|  MODULE 19  ::  INFORMATION THEORY               [**** ]  1.5wk |
+|  MODULE 18  ::  STOCHASTIC PROCESSES             [**** ]  2.5wk |
 +-----------------------------------------------------------------+
 ```
 
-**Why it matters:** Entropy, cross-entropy and KL divergence are the loss
-functions and measuring tools of modern deep learning.
-
-**Topics**
-
-- [ ] Information content (surprise) of an event
-- [ ] Entropy: average surprise, measured in bits or nats
-- [ ] Joint and conditional entropy, chain rule
-- [ ] Cross-entropy
-- [ ] KL divergence: properties, asymmetry, forward vs reverse KL
-- [ ] Mutual information
-- [ ] Jensen-Shannon divergence
-- [ ] Maximum entropy distributions (uniform, exponential, Gaussian)
-- [ ] Perplexity
-- [ ] Source coding intuition (entropy = shortest average code length)
-
-**Picture**
-
-```text
-   |<------------------- H(X,Y) ------------------->|
-   +------------------+----------+------------------+
-   |      H(X|Y)      |  I(X;Y)  |      H(Y|X)      |
-   +------------------+----------+------------------+
-   |<---------- H(X) ----------->|
-                      |<---------- H(Y) ----------->|
-
-   Mutual information I(X;Y) is the overlap: what X and Y share.
-```
-
-**Key formulas**
-
-```text
-  Surprise         I(x) = -log p(x)
-  Entropy          H(X) = -Σ p(x) log p(x)                (max = log k, uniform)
-  Joint            H(X,Y) = -Σ p(x,y) log p(x,y)
-  Conditional      H(Y | X) = H(X,Y) - H(X)
-  Chain rule       H(X,Y) = H(X) + H(Y | X)
-  Cross-entropy    H(p, q) = -Σ p(x) log q(x)
-  KL divergence    D_KL(p || q) = Σ p(x) log( p(x) / q(x) ) ≥ 0
-  Key identity     H(p, q) = H(p) + D_KL(p || q)
-  Mutual info      I(X;Y) = H(X) - H(X | Y) = D_KL( p(x,y) || p(x)p(y) )
-  JS divergence    JS(p, q) = ½ D_KL(p || m) + ½ D_KL(q || m),   m = ½(p + q)
-  Perplexity       PPL = exp( cross-entropy in nats )
-  KL of Gaussians  D_KL( N(μ,σ²) || N(0,1) ) = ½ ( σ² + μ² - 1 - ln σ² )
-```
-
-**In AI/ML:**
-- **Cross-entropy loss** for every classifier and every LLM.
-- Minimizing cross-entropy = minimizing KL to the true distribution
-  = maximizing likelihood.
-- **VAEs**: the loss has a KL term (formula above).
-- **RLHF / PPO**: a KL penalty keeps the fine-tuned model near the base model.
-- **Knowledge distillation**: KL between teacher and student outputs.
-- **Decision trees**: information gain = mutual information.
-- **GANs**: the original GAN minimizes a Jensen-Shannon divergence.
-- **LLM evaluation**: perplexity.
-
-**Practice**
-
-1. Compute the entropy of a fair coin, a biased coin (p = 0.9), and a fair die.
-2. Prove D_KL(p || q) ≥ 0 using Jensen's inequality.
-3. Show D_KL(p || q) ≠ D_KL(q || p) with a numeric example.
-4. Derive the KL between N(μ, σ²) and N(0, 1).
-5. Compute the cross-entropy loss of a softmax output by hand and in `numpy`.
-
----
-
-# Part VI: Randomness Over Time and Computation
-
-## Module 20: Stochastic Processes and Markov Chains
-
-```text
-+-----------------------------------------------------------------+
-|  MODULE 20  ::  STOCHASTIC PROCESSES             [**** ]  2 wk  |
-+-----------------------------------------------------------------+
-```
-
-**Why it matters:** Many things evolve randomly over time: text, prices,
-game states, robots. Reinforcement learning and MCMC are built on Markov
-chains.
+**Why it matters:** Many things change randomly over time: prices, queues,
+populations, text. A stochastic process is a random variable that evolves.
 
 **Topics**
 
 - [ ] What a stochastic process is
-- [ ] Random walks and gambler's ruin
-- [ ] Markov property ("the future depends only on the present")
-- [ ] Transition matrix, n-step transitions
-- [ ] Classification of states: recurrent, transient, absorbing, periodic
-- [ ] Irreducible and aperiodic chains
-- [ ] Stationary distribution and convergence to it
-- [ ] Detailed balance (reversibility)
-- [ ] Absorbing chains: absorption probabilities and expected time
-- [ ] Poisson process: arrivals, exponential inter-arrival times
-- [ ] Brownian motion (intuition)
-- [ ] Hidden Markov Models: forward algorithm, Viterbi
-- [ ] Markov Decision Processes (MDPs) and the Bellman equation
+- [ ] Random walks: simple random walk, gambler's ruin, reflection
+      principle, recurrence and transience
+- [ ] Markov chains: Markov property, transition matrix, n-step
+      transitions, classification of states, irreducible and aperiodic
+      chains, stationary distribution, detailed balance, absorbing chains,
+      convergence to equilibrium
+- [ ] Continuous-time Markov chains
+- [ ] Poisson process: arrivals, exponential inter-arrival times, splitting
+      and merging
+- [ ] Branching processes: extinction probability
+- [ ] Queues (intuition): arrivals, service, waiting times
+- [ ] Brownian motion
 
 **Picture: a 3-state weather chain**
 
@@ -1558,57 +1249,50 @@ chains.
   Chapman-Kolm.     P^(m+n) = P^m P^n
   Stationary        π = π P,    Σᵢ πᵢ = 1
   Detailed balance  πᵢ Pᵢⱼ = πⱼ Pⱼᵢ    =>  π is stationary
+  Gambler's ruin    fair game, start k, stop at 0 or N:  P(reach N) = k / N
   Poisson process   N(t) ~ Poisson(λt),   inter-arrival times ~ Exponential(λ)
-  Bellman (MDP)     V(s) = maxₐ Σ_{s'} P(s' | s, a) [ R(s, a, s') + γ V(s') ]
+  Branching         extinction prob. q = smallest root of q = G(q)   (G = PGF)
+  Brownian motion   B(t) - B(s) ~ N(0, t - s),  independent increments
 ```
 
-**In AI/ML:**
-- **Reinforcement learning** is built on MDPs and Bellman equations.
-- **PageRank** is the stationary distribution of a random surfer.
-- **MCMC** sampling designs a Markov chain whose stationary distribution is
-  the target.
-- **Diffusion models**: the forward process is a Markov chain adding Gaussian noise.
-- **HMMs** for speech, part-of-speech tagging, and time series.
-- **Language models** generate text one token at a time (autoregressive).
+**Where it's used:** Google PageRank (stationary distribution of a random
+web surfer), queues at banks and servers, stock price models (Brownian
+motion), genetics and population models, board games like Snakes and
+Ladders (absorbing chains), reinforcement learning, and text generators.
 
 **Practice**
 
-1. Find the stationary distribution of the weather chain above by hand and
-   by computing Pⁿ for large n in `numpy`.
-2. Gambler's ruin: start with $10, bet $1 on fair flips until $0 or $20.
-   Find P(reach $20) and simulate it.
-3. Implement PageRank on a 5-page toy web.
-4. Solve a tiny grid-world MDP with value iteration.
+1. Find the stationary distribution of the weather chain by hand and by
+   computing Pⁿ for large n.
+2. Simulate gambler's ruin and check P(reach N) = k/N.
+3. Expected number of moves to finish Snakes and Ladders (absorbing chain).
+4. Implement PageRank on a 5-page toy web.
+5. Simulate a Poisson process and check the inter-arrival times are exponential.
 
 ---
 
-## Module 21: Sampling and Computational Probability
+## Module 19: Simulation and Monte Carlo
 
 ```text
 +-----------------------------------------------------------------+
-|  MODULE 21  ::  SAMPLING AND MONTE CARLO         [**** ]  2 wk  |
+|  MODULE 19  ::  SIMULATION AND MONTE CARLO       [**** ]  1.5wk |
 +-----------------------------------------------------------------+
 ```
 
-**Why it matters:** Most real probability problems have no closed-form
-answer. You simulate. Modern generative AI is, at its core, sampling.
+**Why it matters:** When the math gets too hard, simulate. Simulation also
+lets you check every result in this syllabus with a few lines of code.
 
 **Topics**
 
-- [ ] Pseudo-random number generators and seeds
+- [ ] Why simulate
+- [ ] Pseudo-random numbers and seeds
 - [ ] Monte Carlo estimation and its error
 - [ ] Inverse transform sampling
 - [ ] Rejection sampling
 - [ ] Importance sampling
-- [ ] Markov Chain Monte Carlo (MCMC): Metropolis-Hastings
-- [ ] Gibbs sampling
-- [ ] Burn-in, mixing, autocorrelation, diagnostics
-- [ ] Variational inference and the ELBO
-- [ ] Reparameterization trick
-- [ ] Score function (REINFORCE) gradient estimator
-- [ ] Gumbel-max and Gumbel-softmax
-- [ ] Sampling from language models: temperature, top-k, top-p (nucleus)
-- [ ] Bootstrap resampling (review)
+- [ ] Markov Chain Monte Carlo (MCMC): Metropolis-Hastings, Gibbs sampling,
+      burn-in, mixing and diagnostics
+- [ ] Verifying theory by simulation
 
 **Key formulas**
 
@@ -1618,123 +1302,157 @@ answer. You simulate. Modern generative AI is, at its core, sampling.
   Rejection         sample x ~ q, accept with prob. p(x) / (M q(x)),  p ≤ Mq
   Importance        E_p[f(X)] = E_q[ f(X) p(X) / q(X) ]
   Metropolis-H.     accept x' with prob. min(1, p(x') q(x | x') / (p(x) q(x' | x)))
-  ELBO              log p(x) ≥ E_q[ log p(x | z) ] - D_KL( q(z | x) || p(z) )
-  Reparam. trick    z = μ + σ ⊙ ε,   ε ~ N(0, I)   (gradients flow through μ, σ)
-  Score function    ∇_θ E_{p_θ}[f(X)] = E_{p_θ}[ f(X) ∇_θ log p_θ(X) ]
-  Gumbel-max        argmaxᵢ (log πᵢ + Gᵢ) ~ Categorical(π),   Gᵢ ~ Gumbel(0,1)
-  Temperature       pᵢ = exp(zᵢ / T) / Σⱼ exp(zⱼ / T)
-                    T < 1 sharper (safer),  T > 1 flatter (more random)
 ```
 
-**In AI/ML:**
-- **VAEs**: ELBO + reparameterization trick.
-- **Policy gradient RL** (REINFORCE, PPO): score function estimator.
-- **Diffusion models** and **LLMs** generate by sampling.
-- **Bayesian deep learning**: MCMC and variational inference over weights.
-- **Off-policy RL** uses importance sampling.
+**Where it's used:** Risk analysis in finance, physics simulations, weather
+forecasting, computer graphics (ray tracing), game AI, Bayesian statistics,
+and testing your own probability answers.
 
 **Practice**
 
 1. Sample from Exponential(λ) using inverse transform. Check the histogram.
-2. Estimate ∫₀¹ e^(-x²) dx with Monte Carlo and compare to `scipy`.
+2. Estimate ∫₀¹ e^(-x²) dx with Monte Carlo and compare with the exact value.
 3. Implement Metropolis-Hastings to sample from a 2-peaked 1-D distribution.
-4. Implement temperature, top-k and top-p sampling on a toy logits vector.
+4. Pick three earlier practice problems and verify your answers by simulation.
 
 ---
 
-# Part VII: Putting It to Work
-
-## Module 22: Probability in AI/ML: The Map
+## Module 20: Advanced Probability (Measure Theory)
 
 ```text
 +-----------------------------------------------------------------+
-|  MODULE 22  ::  PROBABILITY IN AI/ML: THE MAP    [*****]  always|
+|  MODULE 20  ::  ADVANCED PROBABILITY             [***  ]  3 wk  |
 +-----------------------------------------------------------------+
 ```
 
-**Why it matters:** This module connects every earlier module to real models.
-Come back to it as you learn ML.
+**Why it matters:** This is the rigorous foundation that professional
+probabilists use. It answers questions like "which events can have a
+probability?" and makes the limit theorems fully precise. Optional, but it
+is what turns you from user into hero.
+
+**Topics**
+
+- [ ] Why measure theory (paradoxes the naive approach cannot handle)
+- [ ] σ-algebras and measurable spaces
+- [ ] Probability measures and probability spaces (Ω, F, P)
+- [ ] Random variables as measurable functions
+- [ ] Lebesgue integral and expectation
+- [ ] Borel-Cantelli lemmas
+- [ ] Kolmogorov's zero-one law
+- [ ] Martingales
+- [ ] Stopping times and the optional stopping theorem
+- [ ] Radon-Nikodym theorem and where densities come from
+
+**Key formulas**
+
+```text
+  σ-algebra F       Ω ∈ F;  A ∈ F => Aᶜ ∈ F;  A₁, A₂, ... ∈ F => ∪ Aᵢ ∈ F
+  Probability space (Ω, F, P)
+  Borel-Cantelli 1  Σ P(Aₙ) < ∞  =>  P(Aₙ happens infinitely often) = 0
+  Borel-Cantelli 2  Aₙ independent, Σ P(Aₙ) = ∞  =>  P(Aₙ i.o.) = 1
+  Zero-one law      a tail event has probability 0 or 1
+  Martingale        E[M_{n+1} | M_0, ..., M_n] = M_n
+  Optional stopping E[M_T] = E[M_0]          (under suitable conditions)
+  Density           f = dP / dλ               (Radon-Nikodym derivative)
+```
+
+**Where it's used:** Research in probability and statistics, mathematical
+finance (fair prices are martingales), rigorous proofs in machine learning
+theory, and proving "you cannot beat a fair game" with any betting system.
+
+**Practice**
+
+1. Show that the set of all subsets of a finite Ω is a σ-algebra.
+2. Use Borel-Cantelli to show that a fair coin shows heads infinitely
+   often with probability 1.
+3. Show that your fortune in a fair betting game is a martingale.
+4. Use optional stopping to re-derive the gambler's ruin probability k/N.
+
+---
+
+# Uses of Probability
+
+## Module 21: Applications of Probability
+
+```text
++-----------------------------------------------------------------+
+|  MODULE 21  ::  APPLICATIONS OF PROBABILITY      [*****]  always|
++-----------------------------------------------------------------+
+```
+
+**Why it matters:** Probability is the language of uncertainty in almost
+every field. Each file in this module collects how one field uses it.
 
 **The map**
 
 ```text
-+----------------------------+------------------------------------+---------+
-| ML model / technique       | Probability behind it              | Modules |
-+----------------------------+------------------------------------+---------+
-| Linear regression          | Gaussian likelihood, MLE           | 09 18   |
-| Ridge / Lasso              | MAP with Gaussian / Laplace prior  | 09 18   |
-| Logistic regression        | Bernoulli likelihood, MLE          | 07 18   |
-| Softmax classifier         | Categorical, cross-entropy         | 07 19   |
-| Naive Bayes                | Bayes + conditional independence   | 04 10   |
-| k-means / GMM              | Mixtures, multivariate Gaussian,EM | 10 12 14|
-| PCA                        | Covariance matrix, eigenvectors    | 11 12   |
-| Decision trees             | Entropy, information gain          | 19      |
-| Random forests / bagging   | Bootstrap, variance reduction      | 17 18   |
-| Neural net initialization  | Variance of sums of random vars    | 06 11   |
-| Dropout                    | Bernoulli masks                    | 07      |
-| Batch / layer norm         | Mean and variance                  | 06 11   |
-| SGD                        | Unbiased gradient estimates, LLN   | 06 17   |
-| Language models (LLMs)     | Chain rule, categorical, CE, PPL   | 04 07 19|
-| LLM decoding               | Temperature, top-k, top-p sampling | 21      |
-| VAEs                       | Latent Gaussians, ELBO, KL, reparam| 12 19 21|
-| GANs                       | JS divergence, implicit models     | 19      |
-| Diffusion models           | Gaussian Markov chain, score fn    | 12 20 21|
-| Normalizing flows          | Change of variables, Jacobian      | 08 13   |
-| Gaussian processes         | Conditioning multivariate Gaussian | 12      |
-| HMMs                       | Markov chains, forward/Viterbi     | 20      |
-| Bayesian networks          | Conditional independence           | 04 10   |
-| Reinforcement learning     | MDPs, expectations, Bellman        | 14 20   |
-| Policy gradients (PPO)     | Score function, importance ratio   | 21      |
-| RLHF                       | KL penalty to a reference model    | 19      |
-| Multi-armed bandits        | Hoeffding (UCB), Beta (Thompson)   | 16 18   |
-| Bayesian optimization      | Gaussian processes, expected gain  | 12 18   |
-| Calibration / uncertainty  | Probabilities that match frequency | 03 18   |
-| A/B testing                | Hypothesis tests, CIs, power       | 17 18   |
-| Generalization theory      | Concentration inequalities         | 16      |
-+----------------------------+------------------------------------+---------+
++-----------------------------+----------------------------------------+---------+
+| Field / use                 | Probability behind it                  | Modules |
++-----------------------------+----------------------------------------+---------+
+| AI: classifiers, Naive Bayes| Bayes, conditional independence        | 04 10   |
+| AI: loss functions          | Expectation, likelihood of data        | 06 07   |
+| AI: language models         | Chain rule, categorical distribution   | 04 07   |
+| AI: generative models       | Multivariate Gaussian, sampling        | 12 19   |
+| AI: reinforcement learning  | Markov chains, conditional expectation | 14 18   |
+| AI: uncertainty/calibration | Probabilities that match frequencies   | 03 17   |
+| Statistics and data science | Distributions, LLN, CLT                | 07-09 17|
+| Randomized algorithms       | Expectation, concentration             | 06 16   |
+| Hashing, Bloom filters      | Counting, birthday problem             | 02 03   |
+| Networks and queues         | Poisson process, Markov chains         | 18      |
+| Cryptography and security   | Uniform randomness, counting           | 02 07   |
+| Finance and insurance       | Expectation, covariance, Brownian mot. | 06 11 18|
+| Medicine and testing        | Bayes, base rates                      | 04      |
+| Engineering reliability     | Exponential, Weibull, min/max          | 09 13   |
+| Physics                     | Distributions, random walks, MC        | 09 18 19|
+| Biology and genetics        | Binomial, branching processes          | 07 18   |
+| Games, gambling and sports  | Counting, expectation, LLN             | 02 06 17|
+| Weather and forecasting     | Conditional probability, simulation    | 04 19   |
++-----------------------------+----------------------------------------+---------+
 ```
 
-**Must-know derivations for ML interviews and research**
+**Topics** (one file or subfolder each)
 
-- [ ] MSE loss = Gaussian MLE
-- [ ] Cross-entropy loss = Bernoulli / Categorical MLE
-- [ ] L2 regularization = Gaussian prior; L1 = Laplace prior
-- [ ] Bias-variance decomposition
-- [ ] Softmax + cross-entropy gradient = (predicted - true)
-- [ ] KL divergence between two Gaussians
-- [ ] ELBO derivation via Jensen's inequality
-- [ ] Reparameterization trick
-- [ ] EM algorithm for Gaussian mixtures
-- [ ] Xavier/He initialization variance
-- [ ] Bellman equation from the tower property
+- [ ] AI and machine learning (subfolder): probabilistic classifiers and Naive
+      Bayes, loss functions as probability, language models, generative
+      models, reinforcement learning, uncertainty and calibration
+- [ ] Statistics and data science
+- [ ] Computer science (subfolder): randomized algorithms, hashing and Bloom
+      filters, average-case analysis, networks and queues
+- [ ] Cryptography and security
+- [ ] Finance and insurance
+- [ ] Medicine and diagnostic testing
+- [ ] Engineering and reliability
+- [ ] Physics
+- [ ] Biology and genetics
+- [ ] Games, gambling and sports
+- [ ] Weather and forecasting
 
-**Mini projects (put them in this repo)**
+**Mini projects**
 
 ```text
   [ ] P1  Monte Carlo playground: π, birthday problem, Monty Hall
   [ ] P2  CLT visualizer for any distribution
   [ ] P3  Naive Bayes spam filter from scratch
-  [ ] P4  Bayesian coin: animate a Beta posterior updating
-  [ ] P5  Logistic regression from scratch as MLE with gradient descent
-  [ ] P6  Gaussian mixture model with EM from scratch
-  [ ] P7  Markov chain text generator, then compare to a bigram LM
-  [ ] P8  Metropolis-Hastings sampler with diagnostics
-  [ ] P9  Thompson sampling vs UCB on a multi-armed bandit
-  [ ] P10 Tiny VAE on MNIST (KL + reparameterization)
+  [ ] P4  Bayesian coin: watch beliefs update flip by flip
+  [ ] P5  Markov chain text generator
+  [ ] P6  Snakes and Ladders: expected game length via Markov chains
+  [ ] P7  Casino simulator: why the house always wins (LLN)
+  [ ] P8  Random walk and stock price simulator
 ```
 
 ---
 
-## Module 23: Probability for Life
+## Module 22: Probability for Life
 
 ```text
 +-----------------------------------------------------------------+
-|  MODULE 23  ::  PROBABILITY FOR LIFE             [*****]  always|
+|  MODULE 22  ::  PROBABILITY FOR LIFE             [*****]  always|
 +-----------------------------------------------------------------+
 ```
 
-**Why it matters:** Probability is the logic of uncertainty. Every important
-decision (health, money, career, relationships) is made under uncertainty.
+**Why it matters:** Every important decision (health, money, career,
+relationships) is made under uncertainty. Probability is the logic of
+uncertainty.
 
 **Ideas to live by**
 
@@ -1771,49 +1489,47 @@ decision (health, money, career, relationships) is made under uncertainty.
 
 ---
 
-## Study Plan (About 30 Weeks)
+## Study Plan
 
-About 8 to 10 hours a week. Each `##` is one week. In a hurry? Follow the
-[shortest path to ML](#the-big-picture-roadmap) first (about 25 weeks).
+About 8 to 10 hours a week. Each `##` is one week, about 28 weeks in total.
+Modules 21 and 22 run alongside everything else.
 
 ```text
- WEEK                    1   3   5   7   9   11  13  15  17  19  21  23  25  27  29  31
-                         |-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
- 00  Prerequisites       ##
- 01  Sets and events       ##
- 02  Counting                ##
- 03  Axioms                    ##
- 04  Conditional + Bayes         ####
- 05  Discrete RVs                    ##
- 06  E[X], Var                         ###
- 07  Discrete dists                       ###
- 08  Continuous RVs                          ##
- 09  Continuous dists                          ####
- 10  Joint dists                                   ###
- 11  Covariance                                       ##
- 12  Multivar. Gaussian                                 ###
- 13  Functions of RVs                                      ##
- 14  Cond. expectation                                       ##
- 15  Generating fns                                            #
- 16  Inequalities                                               ##
- 17  LLN and CLT                                                  ###
- 18  Inference                                                       ######
- 19  Information theory                                                    ###
- 20  Markov chains                                                            ####
- 21  Sampling, MCMC                                                               ####
- 22  AI/ML map            ===== use alongside your ML study from week 5 onward =====
- 23  Probability for life ===== practice it every day, starting now ==============
+ WEEK                    1   3   5   7   9   11  13  15  17  19  21  23  25  27  29
+                         |-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|-|
+ 01  Sets and events     ##
+ 02  Counting              ##
+ 03  Axioms                  ##
+ 04  Conditional + Bayes       ####
+ 05  Discrete RVs                  ##
+ 06  E[X], Var                       ###
+ 07  Discrete dists                     ###
+ 08  Continuous RVs                        ##
+ 09  Continuous dists                        ####
+ 10  Joint dists                                 ###
+ 11  Covariance                                     ##
+ 12  Multivar. Gaussian                               ###
+ 13  Functions of RVs                                    ##
+ 14  Cond. expectation                                     ##
+ 15  Generating fns                                          ##
+ 16  Inequalities                                              ##
+ 17  LLN and CLT                                                 ###
+ 18  Stochastic proc.                                               #####
+ 19  Simulation                                                          ###
+ 20  Advanced (measure)                                                     ######
+ 21  Applications         ===== read alongside every module =====
+ 22  Probability for life ===== practice it every day, starting now =====
 ```
 
-**Weekly rhythm (about 8 to 10 hours a week)**
+**Weekly rhythm**
 
 ```text
   +-----------+-----------------------------------------------+
   | Mon-Tue   | Lectures / reading, take notes                |
-  | Wed       | Derive key formulas by hand                   |
+  | Wed       | Derive key results by hand                    |
   | Thu-Fri   | Problem sets (10 to 15 problems)              |
-  | Sat       | Python simulation of the week's ideas         |
-  | Sun       | Review, write a summary in this repo, rest    |
+  | Sat       | Simulate the week's ideas in Python           |
+  | Sun       | Review, write your notes in this repo, rest   |
   +-----------+-----------------------------------------------+
 ```
 
@@ -1843,43 +1559,41 @@ About 8 to 10 hours a week. Each `##` is one week. In a hurry? Follow the
   Cov(X, Y)         covariance
   ρ                 correlation coefficient
   Σ (matrix)        covariance matrix
-  X̄                 sample mean
-  θ                 model parameters
-  θ̂                 an estimate of θ
-  L(θ), ℓ(θ)        likelihood, log-likelihood
-  H(X)              entropy
-  D_KL(p || q)      KL divergence from q to p
+  X̄                 average of X₁, ..., Xₙ
+  M_X(t)            moment generating function
   N(μ, σ²)          normal distribution
   ∝                 "proportional to"
   ->d, ->p, ->a.s.  convergence in distribution / probability / almost surely
+  (Ω, F, P)         probability space (Module 20)
 ```
 
 ---
 
 ## Appendix B: Distribution Cheat Sheet
 
-| Distribution | Type | Support | Parameters | Mean | Variance | Story / ML use |
+| Distribution | Type | Support | Parameters | Mean | Variance | Story / used for |
 |---|---|---|---|---|---|---|
-| Bernoulli | Discrete | {0, 1} | p | p | p(1-p) | One yes/no trial; binary labels, dropout |
-| Binomial | Discrete | {0..n} | n, p | np | np(1-p) | Successes in n trials; test accuracy |
+| Bernoulli | Discrete | {0, 1} | p | p | p(1-p) | One yes/no trial |
+| Binomial | Discrete | {0..n} | n, p | np | np(1-p) | Successes in n trials; quality control, polls |
 | Geometric | Discrete | {1, 2, ...} | p | 1/p | (1-p)/p² | Trials until first success |
-| Negative Binomial | Discrete | {0, 1, ...} | r, p | r(1-p)/p | r(1-p)/p² | Failures before r-th success; overdispersed counts |
-| Poisson | Discrete | {0, 1, ...} | λ | λ | λ | Rare event counts; clicks, arrivals |
-| Hypergeometric | Discrete | {0..n} | N, K, n | nK/N | n(K/N)(1-K/N)(N-n)/(N-1) | Draws without replacement |
-| Categorical | Discrete | {1..k} | p₁..pₖ | - | - | One k-way choice; softmax, next token |
-| Multinomial | Discrete | counts | n, p₁..pₖ | npᵢ | npᵢ(1-pᵢ) | Counts of k outcomes; bag of words |
-| Uniform | Continuous | [a, b] | a, b | (a+b)/2 | (b-a)²/12 | Total ignorance; random init |
-| Normal | Continuous | ℝ | μ, σ² | μ | σ² | Sums of many effects; noise, VAEs |
+| Negative Binomial | Discrete | {0, 1, ...} | r, p | r(1-p)/p | r(1-p)/p² | Failures before r-th success |
+| Poisson | Discrete | {0, 1, ...} | λ | λ | λ | Rare event counts; calls, arrivals, typos |
+| Hypergeometric | Discrete | {0..n} | N, K, n | nK/N | n(K/N)(1-K/N)(N-n)/(N-1) | Draws without replacement; cards |
+| Categorical | Discrete | {1..k} | p₁..pₖ | - | - | One k-way choice; a die, a classifier |
+| Multinomial | Discrete | counts | n, p₁..pₖ | npᵢ | npᵢ(1-pᵢ) | Counts of k outcomes; election votes |
+| Uniform | Continuous | [a, b] | a, b | (a+b)/2 | (b-a)²/12 | Total ignorance; random numbers |
+| Normal | Continuous | ℝ | μ, σ² | μ | σ² | Sums of many small effects; heights, errors |
 | Exponential | Continuous | [0, ∞) | λ | 1/λ | 1/λ² | Waiting time; memoryless |
-| Gamma | Continuous | (0, ∞) | α, β | α/β | α/β² | Sum of exponentials; prior on rates |
-| Beta | Continuous | (0, 1) | α, β | α/(α+β) | αβ/((α+β)²(α+β+1)) | Prior on a probability; Thompson sampling |
-| Dirichlet | Continuous | simplex | α₁..αₖ | αᵢ/Σα | - | Prior on probability vectors; topic models |
-| Laplace | Continuous | ℝ | μ, b | μ | 2b² | Sharp peak; L1 regularization |
-| Student-t | Continuous | ℝ | ν | 0 | ν/(ν-2) | Heavy tails; robust models, t-SNE |
-| Chi-square | Continuous | (0, ∞) | k | k | 2k | Sum of k squared normals; tests |
+| Gamma | Continuous | (0, ∞) | α, β | α/β | α/β² | Sum of exponential waiting times |
+| Beta | Continuous | (0, 1) | α, β | α/(α+β) | αβ/((α+β)²(α+β+1)) | Uncertainty about a probability |
+| Dirichlet | Continuous | simplex | α₁..αₖ | αᵢ/Σα | - | Uncertainty about probability vectors |
+| Laplace | Continuous | ℝ | μ, b | μ | 2b² | Sharp peak, heavier tails than normal |
+| Student-t | Continuous | ℝ | ν | 0 | ν/(ν-2) | Heavy tails; small-sample averages |
+| Chi-square | Continuous | (0, ∞) | k | k | 2k | Sum of k squared standard normals |
 | Log-normal | Continuous | (0, ∞) | μ, σ² | e^(μ+σ²/2) | (e^σ²-1)e^(2μ+σ²) | Products of effects; incomes, prices |
-| Cauchy | Continuous | ℝ | x₀, γ | undefined | undefined | Counterexample: CLT fails |
-| Gumbel | Continuous | ℝ | μ, β | μ + βγ | π²β²/6 | Maximum of samples; Gumbel-softmax |
+| Weibull | Continuous | [0, ∞) | k, λ | λΓ(1+1/k) | λ²[Γ(1+2/k) - Γ(1+1/k)²] | Lifetimes and failure times |
+| Cauchy | Continuous | ℝ | x₀, γ | undefined | undefined | Counterexample: LLN and CLT fail |
+| Gumbel | Continuous | ℝ | μ, β | μ + βγ | π²β²/6 | Maximum of many samples; floods |
 
 (γ ≈ 0.5772 is the Euler-Mascheroni constant.)
 
@@ -1908,18 +1622,17 @@ About 8 to 10 hours a week. Each `##` is one week. In a hurry? Follow the
 |   N(μ, σ²):  (1/√(2πσ²)) exp(-(x - μ)² / (2σ²))      Z = (X - μ) / σ         |
 |   AX + b ~ N(Aμ + b, AΣAᵀ)        68 / 95 / 99.7 within 1 / 2 / 3 σ          |
 +------------------------------------------------------------------------------+
+|  GENERATING FUNCTIONS                                                        |
+|   M_X(t) = E[e^(tX)]     E[X^n] = M^(n)(0)     M_{X+Y} = M_X M_Y (indep.)    |
++------------------------------------------------------------------------------+
 |  LIMITS AND BOUNDS                                                           |
-|   LLN: X̄ -> μ          CLT: X̄ ≈ N(μ, σ²/n)          SE = σ / √n              |
+|   LLN: X̄ -> μ          CLT: X̄ ≈ N(μ, σ²/n)          SD(X̄) = σ / √n           |
 |   Markov: P(X ≥ a) ≤ E[X]/a       Chebyshev: P(|X - μ| ≥ kσ) ≤ 1/k²          |
 |   Jensen (convex f): f(E[X]) ≤ E[f(X)]                                       |
 +------------------------------------------------------------------------------+
-|  INFERENCE                                                                   |
-|   MLE: argmax Σ log p(xᵢ | θ)       MAP: argmax [Σ log p(xᵢ | θ) + log p(θ)] |
-|   posterior ∝ likelihood x prior    MSE = Bias² + Variance                   |
-+------------------------------------------------------------------------------+
-|  INFORMATION                                                                 |
-|   H(p) = -Σ p log p        H(p, q) = -Σ p log q = H(p) + D_KL(p || q)        |
-|   D_KL(p || q) = Σ p log(p / q) ≥ 0        I(X;Y) = H(X) - H(X | Y)          |
+|  PROCESSES                                                                   |
+|   Markov chain: π = πP      Poisson process: N(t) ~ Poisson(λt)              |
+|   Martingale: E[M_{n+1} | past] = M_n                                        |
 +==============================================================================+
 ```
 
@@ -1935,36 +1648,38 @@ About 8 to 10 hours a week. Each `##` is one week. In a hurry? Follow the
 | Bertsekas and Tsitsiklis, *Introduction to Probability* | Beginner to intermediate | Very clear, engineering-friendly. |
 | Sheldon Ross, *A First Course in Probability* | Beginner | Lots of worked examples and exercises. |
 
-**For the statistics and ML parts**
+**Going further (Level 5)**
 
 | Book | Covers |
 |---|---|
-| Wasserman, *All of Statistics* | Fast, complete tour of inference for CS people |
-| Deisenroth, Faisal and Ong, *Mathematics for Machine Learning* (Ch. 6) | Probability exactly as ML uses it. Free online. |
-| Bishop, *Pattern Recognition and Machine Learning* | Probabilistic ML classic |
-| Murphy, *Probabilistic Machine Learning: An Introduction* | Modern, complete. Free online. |
-| MacKay, *Information Theory, Inference, and Learning Algorithms* | Information theory + Bayesian ML. Free online. |
-| Cover and Thomas, *Elements of Information Theory* | The standard information theory text |
-| Grimmett and Stirzaker, *Probability and Random Processes* | Rigorous, for later |
+| Jim Pitman, *Probability* | Beautiful problems and intuition |
+| Grimmett and Stirzaker, *Probability and Random Processes* | Rigorous, covers stochastic processes |
+| Sheldon Ross, *Introduction to Probability Models* | Markov chains, Poisson processes, queues |
+| William Feller, *An Introduction to Probability Theory and Its Applications, Vol. 1* | The classic |
+| David Williams, *Probability with Martingales* | Measure theory and martingales, short and friendly |
+| Rick Durrett, *Probability: Theory and Examples* | Graduate-level measure-theoretic probability. Free online. |
+
+**Problem books**
+
+| Book | Why |
+|---|---|
+| Frederick Mosteller, *Fifty Challenging Problems in Probability* | Short, famous puzzles with solutions |
+| Grimmett and Stirzaker, *One Thousand Exercises in Probability* | Huge set of solved exercises |
 
 **Courses and videos**
 
 - Harvard **Stat 110** (Joe Blitzstein): full lectures on YouTube, problem sets online.
 - MIT **6.041 / RES.6-012** Probabilistic Systems Analysis (John Tsitsiklis): MIT OpenCourseWare.
 - Stanford **CS109** Probability for Computer Scientists.
-- **3Blue1Brown**: Bayes' theorem, the Central Limit Theorem, and convolutions.
+- **3Blue1Brown**: Bayes' theorem and the Central Limit Theorem.
 - **Seeing Theory** (Brown University): interactive visual probability.
 
-**Python tools**
+**Python for simulation**
 
 ```text
-  numpy           random sampling, linear algebra
-  scipy.stats     every distribution: pdf, cdf, ppf, rvs, fit
-  matplotlib      plotting histograms and densities
-  seaborn         nicer statistical plots
-  pandas          working with real datasets
-  PyMC / NumPyro  Bayesian modeling and MCMC
-  torch.distributions   distributions inside deep learning models
+  numpy           random sampling
+  scipy.stats     every distribution: pdf, cdf, ppf, rvs
+  matplotlib      histograms and density plots
 ```
 
 ---
@@ -1972,9 +1687,8 @@ About 8 to 10 hours a week. Each `##` is one week. In a hurry? Follow the
 ## Appendix E: Progress Tracker
 
 ```text
-  MODULE                                   READ  DERIVE  CODE  EXPLAIN  DONE
+  MODULE                                   READ  DERIVE  SIM.  EXPLAIN  DONE
   ---------------------------------------  ----  ------  ----  -------  ----
-  00  Prerequisites                        [ ]   [ ]     [ ]   [ ]      [ ]
   01  Sets, sample spaces, events          [ ]   [ ]     [ ]   [ ]      [ ]
   02  Counting                             [ ]   [ ]     [ ]   [ ]      [ ]
   03  Axioms of probability                [ ]   [ ]     [ ]   [ ]      [ ]
@@ -1992,12 +1706,11 @@ About 8 to 10 hours a week. Each `##` is one week. In a hurry? Follow the
   15  Generating functions                 [ ]   [ ]     [ ]   [ ]      [ ]
   16  Inequalities and concentration       [ ]   [ ]     [ ]   [ ]      [ ]
   17  Limit theorems                       [ ]   [ ]     [ ]   [ ]      [ ]
-  18  Statistical inference                [ ]   [ ]     [ ]   [ ]      [ ]
-  19  Information theory                   [ ]   [ ]     [ ]   [ ]      [ ]
-  20  Stochastic processes                 [ ]   [ ]     [ ]   [ ]      [ ]
-  21  Sampling and Monte Carlo             [ ]   [ ]     [ ]   [ ]      [ ]
-  22  Probability in AI/ML                 [ ]   [ ]     [ ]   [ ]      [ ]
-  23  Probability for life                 [ ]   [ ]     [ ]   [ ]      [ ]
+  18  Stochastic processes                 [ ]   [ ]     [ ]   [ ]      [ ]
+  19  Simulation and Monte Carlo           [ ]   [ ]     [ ]   [ ]      [ ]
+  20  Advanced probability                 [ ]   [ ]     [ ]   [ ]      [ ]
+  21  Applications of probability          [ ]   [ ]     [ ]   [ ]      [ ]
+  22  Probability for life                 [ ]   [ ]     [ ]   [ ]      [ ]
 ```
 
 ```text
