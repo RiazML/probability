@@ -58,7 +58,8 @@ probability/
 |-- README.md                     <- front page with the module table
 |-- SYLLABUS.md                   <- master plan (what to write)
 |-- tools/
-|   `-- check_math.py             <- math checker: run it after every edit
+|   |-- check_math.py             <- math checker: run it after every edit
+|   `-- check_links.py            <- link checker: broken links and empty files
 |-- .claude/
 |   |-- rules/                    <- detailed rules (load for every .md file)
 |   |   |-- writing-style.md      <- voice, file structure, examples, practice
@@ -102,7 +103,8 @@ Every folder has a `README.md`.
 
    Fix every ERROR. A WARNING means a command has not been tested yet: replace
    it with a whitelisted one, or test it on GitHub and in VS Code first.
-7. **Check the links:** every relative link must point to a file that exists.
+7. **Check the links:** every relative link must point to a file and heading that
+   exist. Run `python3 tools/check_links.py <file>`.
 8. **Review** with the checklist below, then commit.
 
 ## Before You Finish: Checklist
@@ -116,7 +118,7 @@ Every folder has a `README.md`.
 - [ ] The Python runs, uses `default_rng(42)`, and the output shown is real.
 - [ ] 4-6 practice problems with answers in `<details>`.
 - [ ] `python3 tools/check_math.py <file>` reports **0 errors**.
-- [ ] All links work, including the previous / module / next footer.
+- [ ] `python3 tools/check_links.py <file>` reports **0 problems** (footer links too).
 - [ ] Notation matches `latex.md`, section 6.
 - [ ] Nothing outside the topic's scope; later ideas are linked, not taught.
 
@@ -126,8 +128,8 @@ Every folder has a `README.md`.
 - One topic (or one module README) per commit when possible.
 - Commit messages: imperative and specific, such as
   `Write 4.4 Bayes' Theorem` or `Fix set notation in Module 01`.
-- Run the math checker on the whole repo before pushing:
-  `python3 tools/check_math.py`.
+- Run both checkers on the whole repo before pushing:
+  `python3 tools/check_math.py` and `python3 tools/check_links.py`.
 
 ## Quick Math Reference
 
