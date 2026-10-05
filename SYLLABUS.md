@@ -403,8 +403,8 @@ time you change your mind because of new evidence.
 1. Solve Monty Hall with Bayes' theorem, then simulate 100,000 games.
 2. Rework the medical example with prevalence 0.1. What changes, and why?
 3. Find three events that are pairwise independent but not mutually independent.
-4. Gambler's ruin: start with $k, bet $1 on fair flips until $0 or $N.
-   Show P(reach $N) = k/N.
+4. Gambler's ruin: start with k taka, bet 1 taka on each fair coin flip, and stop
+   at 0 or N taka. Show P(reach N) = k/N.
 
 ---
 
@@ -519,7 +519,7 @@ machine learning models minimize (they are expectations).
    permutation of n items. (Answer: 1, for every n.)
 2. Prove E[X²] ≥ (E[X])².
 3. Prove that E[X] minimizes E[(X - c)²] over c.
-4. A game costs $5. You roll a die and win $(2 x roll). Should you play?
+4. A game costs 5 taka. You roll a die and win (2 x roll) taka. Should you play?
 
 ---
 
