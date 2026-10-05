@@ -44,7 +44,7 @@ Nothing. This is the first module. You only need school arithmetic and fractions
    1.1 What is probability?
             |
             v
-   1.2 Sample space  ----->  1.3 Events = subsets  ----->  1.9 Size of the space
+   1.2 Sample space  --->  1.3 Events = subsets  --->  1.9 Size of the space
                                      |
                                      v
                            1.4 OR / AND / NOT
