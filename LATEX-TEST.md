@@ -1,116 +1,128 @@
-# LaTeX render test
+# LaTeX render test, round 2
 
-T01 The mean is $\mu = E[X]$ here.
+R01
 
-T02 When $a \ne 0$, solve $ax^2 + bx + c = 0$ now.
+$$
+f(x) =
+\begin{cases}
+\lambda e^{-\lambda x} & \text{if } x \ge 0 \\
+0 & \text{if } x < 0
+\end{cases}
+$$
 
-T03 $X_1$ and $X_2$ and $a_{ij}$ then $b_{k}$ end.
+R02
 
-T04 $f^*$ and $g^*$ end.
+$$
+f(x) = \begin{cases} 1 & x \ge 0 \cr 0 & x < 0 \end{cases}
+$$
 
-T05 $A = \{1, 2, 3\}$ end.
+R03 $\int_0^1 f(x) \thinspace dx$ and $a \medspace b \thickspace c \negthinspace d \quad e \qquad f \ g$ end.
 
-T06 $A = \lbrace 1, 2, 3 \rbrace$ end.
+R04 $f^{\ast}$ and $x^\ast$ and $g^{\ast}$ end.
 
-T07 $\int f(x)\,dx$ end.
+R05 $\Vert x \Vert$ end.
 
-T08 $a\;b\!c\:d$ end.
+R06
 
-T09 $P(A | B)$ and $P(A \mid B)$ end.
+$$
+\left\lbrace x : x > 0 \right\rbrace
+$$
 
-| T10 | cell |
-|---|---|
-| mid | $P(A \mid B)$ |
-| pipe | $P(A|B)$ |
-| abs | $\lvert x \rvert$ |
-| set | $\lbrace 1, 2 \rbrace$ |
+R08
 
-T11 $a < b$ and $c > d$ and $a<b$ and $x<y>z$ end.
+<details>
+<summary>Solution</summary>
 
-T12 ($P_{g}$) end.
+The answer is $y_1 = 3$.
 
-T13 costs \$5 here. Also <span>$</span>100 here.
+$$
+x = \frac{1}{2}
+$$
 
-T14
+</details>
+
+R09
+
+> $$
+> a = b
+> $$
+
+R10
+
+1. First step:
+
+   $$
+   E[X] = \mu
+   $$
+
+2. Second step with $x_2$.
+
+R11 $x$2 and $y$ 2 end.
+
+R15 $X_n \xrightarrow{d} Z$ and $X_n \stackrel{p}{\to} \mu$ end.
+
+R16 $X_1, \dots, X_n \overset{\text{iid}}{\sim} F$ end.
+
+R17 $\mathbf{x}$ and $\boldsymbol{\mu}$ end.
+
+R18 $\dfrac{a}{b}$ and $\tfrac{a}{b}$ end.
+
+R20
 
 $$
 \begin{aligned}
-E[X] &= \sum_x x\,p(x) \\
-&= \mu
+\operatorname{Var}(X) &= E\big[(X - \mu)^2\big] \\
+&= E[X^2] - 2\mu E[X] + \mu^2 && \text{(linearity)} \\
+&= E[X^2] - \mu^2
 \end{aligned}
 $$
 
-T15
+R21 the $n$th term and the $n$-th term end.
+
+R22 $-1$ end.
+
+R23 **$x$ is key** end.
+
+R25
 
 $$
-f(x) = \begin{cases} \lambda e^{-\lambda x} & x \ge 0 \\ 0 & x < 0 \end{cases}
+\begin{array}{c|c}
+x & p(x) \\
+\hline
+0 & 1/2
+\end{array}
 $$
 
-T16
+R27 $\displaystyle\sum_{i=1}^n i$ end.
 
-$$P(\{\omega\}) = \frac{1}{6}$$
+R35 $f'(x)$ and $f''(x)$ end.
 
-T17 $\text{Var}(X)$ and $\operatorname{Var}(X)$ end.
+R37 $\mathcal{F}$ and $\Omega$ and $\varnothing$ and $\emptyset$ end.
 
-T18 $50\%$ and $\#A$ end.
+R39 $\Pr(A)$ end.
 
-> [!NOTE]
-> T19 The variance is $\sigma^2 = E[(X-\mu)^2]$.
+R40 $A \implies B$ and $A \iff B$ end.
 
-- T20 **Key:** $x_1 + x_2$ in a list.
+R41 $a \lt b$ and $c \gt d$ and $x < y > z$ end.
 
-T21 variance$\sigma^2$ glued.
+| R42 | cell |
+|---|---|
+| binom | $\binom{n}{k} p^k (1-p)^{n-k}$ |
+| two | $a_1$ and $b_2$ |
+| frac | $\frac{1}{\lambda^2}$ |
 
-T22 is $x$. and $y$, end.
+R43 $X \perp Y$ end.
 
-T23 $\mathbb{R}$ $\mathbb{P}$ $\mathbb{E}$ end.
+R44 $\mathbf{1}_A$ and $\mathbb{I}_A$ end.
 
-T24 $\binom{n}{k}$ end.
-
-T25 $\left(\frac{a}{b}\right)$ end.
-
-T26 $X \sim \text{Bin}(n, p)$ end.
-
-### T28 The $\chi^2$ distribution
-
-T29 text $$x^2$$ text.
-
-T30 $\bar{X}$ and $\overline{X}_n$ end.
-
-T31 $\begin{pmatrix} a & b \\ c & d \end{pmatrix}$ end.
-
-T32
-
-$$E = mc^2 \tag{1}$$
-
-T34 $\boxed{x}$ end.
-
-T36
-
-$$\underbrace{a + b}_{n}$$
-
-T40 $a_1$ text _italic_ $b_2$ end.
-
-T41 $\{x\}$ and $\\{x\\}$ end.
-
-T42
+R45
 
 $$
-P\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} P(A_i)
+P(A \mid B) = \frac{P(B \mid A) \thinspace P(A)}{P(B)}
 $$
 
-T43 $E[X \mid Y = y] = \sum_{x} x \, P(X = x \mid Y = y)$ end.
-
-T44 $P(X \le x)$ and $P(X \geq x)$ end.
-
-T45
-
+R46 Text before.
 $$
-\operatorname{Var}(X) = \mathbb{E}\big[(X - \mu)^2\big] = \mathbb{E}[X^2] - \mu^2
+a = b
 $$
-
-T46 $\lim_{n \to \infty} P\big(\lvert \bar{X}_n - \mu \rvert > \varepsilon\big) = 0$ end.
-
-T47 $p(x)^{*}$ and $a * b$ and $c * d$ end.
-
-T48 $\{\omega_1, \omega_2\}$ end.
+Text after.
