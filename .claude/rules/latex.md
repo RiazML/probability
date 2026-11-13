@@ -143,7 +143,7 @@ All of these compile in KaTeX and in MathJax and survive GitHub's parser.
 | Probability | `P(A)`, `P(A \mid B)`, `E[X]`, `\operatorname{Var}(X)`, `\operatorname{Cov}(X, Y)`, `\Pr` |
 | Sets | `\Omega \omega \in \notin \subset \subseteq \cup \cap \setminus \varnothing \emptyset \lbrace \rbrace \mid A^c` |
 | Big operators | `\sum \prod \int \lim \bigcup \bigcap \max \min \sup \inf \log \ln \exp` |
-| Relations | `= \ne \lt \gt \le \ge \approx \sim \propto \equiv \to \implies \iff \perp` |
+| Relations | `= \ne \lt \gt \ll \gg \le \ge \approx \sim \propto \equiv \to \implies \iff \perp` |
 | Arithmetic | `\pm \times \cdot \div \ast \frac \dfrac \tfrac \binom \sqrt` |
 | Dots | `\dots \ldots \cdots \vdots \ddots` |
 | Fonts | `\mathbb{R} \mathbf{x} \mathcal{F} \mathrm{d} \boldsymbol{\mu} \text{...} \operatorname{...}` |

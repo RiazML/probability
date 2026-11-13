@@ -28,7 +28,7 @@ lambda mu nu xi pi varpi rho varrho sigma varsigma tau upsilon phi varphi chi
 psi omega Gamma Delta Theta Lambda Xi Pi Sigma Upsilon Phi Psi Omega
 sum prod int iint lim limsup liminf sup inf max min log ln exp sin cos tan det
 Pr arg
-le leq ge geq ne neq lt gt approx sim simeq cong equiv propto to rightarrow
+le leq ge geq ne neq lt gt ll gg approx sim simeq cong equiv propto to rightarrow
 leftarrow Rightarrow Leftarrow leftrightarrow Leftrightarrow implies iff mapsto
 in notin ni subset subseteq supset supseteq subsetneq cup cap setminus
 emptyset varnothing mid perp parallel not colon triangleq
