@@ -59,7 +59,9 @@ probability/
 |-- SYLLABUS.md                   <- master plan (what to write)
 |-- tools/
 |   |-- check_math.py             <- math checker: run it after every edit
-|   `-- check_links.py            <- link checker: broken links and empty files
+|   |-- check_links.py            <- link checker: broken links and empty files
+|   |-- check_widths.py           <- diagram checker: lines over 76 characters
+|   `-- check_code.py             <- re-runs every Python example, compares output
 |-- .claude/
 |   |-- rules/                    <- detailed rules (load for every .md file)
 |   |   |-- writing-style.md      <- voice, file structure, examples, practice
@@ -119,6 +121,9 @@ Every folder has a `README.md`.
 - [ ] 4-6 practice problems with answers in `<details>`.
 - [ ] `python3 tools/check_math.py <file>` reports **0 errors**.
 - [ ] `python3 tools/check_links.py <file>` reports **0 problems** (footer links too).
+- [ ] `python3 tools/check_widths.py <file>` prints no too-wide diagram lines.
+- [ ] `python3 tools/check_code.py <file>` reports **0 mismatches** (every example
+      reproduces the output shown).
 - [ ] Notation matches `latex.md`, section 6.
 - [ ] Nothing outside the topic's scope; later ideas are linked, not taught.
 
@@ -128,8 +133,10 @@ Every folder has a `README.md`.
 - One topic (or one module README) per commit when possible.
 - Commit messages: imperative and specific, such as
   `Write 4.4 Bayes' Theorem` or `Fix set notation in Module 01`.
-- Run both checkers on the whole repo before pushing:
-  `python3 tools/check_math.py` and `python3 tools/check_links.py`.
+- Run the checkers on the whole repo before pushing: `python3 tools/check_math.py`,
+  `python3 tools/check_links.py` and `python3 tools/check_widths.py`. Run
+  `python3 tools/check_code.py` too when you changed any code or output (it can take
+  several minutes for the whole book).
 
 ## Quick Math Reference
 

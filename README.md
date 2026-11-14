@@ -1,11 +1,29 @@
 # Probability: Zero to Hero
 
-Notes, worked problems and simulations for probability, and only probability:
-from sample spaces to Markov chains and martingales, plus where probability
-is used in the real world.
+A self-study book on probability, and only probability: from sample spaces and
+Bayes' theorem to Markov chains and martingales, plus where probability is used
+in AI, computer science, finance, medicine, games and everyday life.
 
-**Start here: [SYLLABUS.md](SYLLABUS.md)**, the full roadmap with topics, key
-formulas, uses and practice problems for every module.
+- **22 modules** and **255 lessons**, each with an intuition, a picture, a proof,
+  worked examples, a simulation, common mistakes and practice problems.
+- **550 Python examples** that you can run. Each one shows the output it prints,
+  and the output is checked by a script.
+- Written in simple English for computer science students.
+
+**New here? Start with [SYLLABUS.md](SYLLABUS.md)**, the full roadmap with the
+topics, key formulas, uses and practice ideas for every module. Then read the
+modules in order, from Module 01.
+
+## How to Read This Book
+
+1. Read one lesson, then close the book and try to say it in your own words.
+2. Do the practice problems before you open the hidden answers.
+3. Run the Python example and change a number. Watch what happens.
+4. At the end of a module, do its problem set before you move on.
+
+Calculus starts in Module 08, and a little matrix algebra appears in Modules 11
+and 12. Each tool is explained briefly the first time it is needed. Module 20
+(measure theory) is optional.
 
 ## Modules
 
@@ -40,4 +58,16 @@ formulas, uses and practice problems for every module.
 python -m venv .venv
 source .venv/bin/activate   # Windows: .venv\Scripts\activate
 pip install numpy scipy matplotlib jupyter
+```
+
+## For Contributors
+
+Writing rules are in [CLAUDE.md](CLAUDE.md) and in `.claude/rules/`. Four scripts
+in `tools/` keep the book correct. Run them after any edit:
+
+```bash
+python3 tools/check_math.py     # math renders on GitHub and in VS Code
+python3 tools/check_links.py    # no broken links, no empty files
+python3 tools/check_widths.py   # diagrams fit in 76 characters
+python3 tools/check_code.py     # every Python example prints what the book shows
 ```
